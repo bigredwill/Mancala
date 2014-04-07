@@ -4,7 +4,7 @@ Mancala
 Group Project for CS151 - Object Oriented Design
 TO-DO
 =======
-1. ###Weekly Team Report
+1. __Weekly Team Report__
   * Needs to be done asap
 1. Update To-Do List  
 2. Create **Use Cases**  
@@ -41,7 +41,7 @@ For each day, write one or two lines about what you did and how long it took.
 If if you didn't do any project on a particular day, leave the line blank.
 
 __Team Report__
-+The team leader writes no more than 10 lines of summary stating:
++ The team leader writes no more than 10 lines of summary stating:
  1. Weekly achievements.
  2. Issues that need to be resolved next week.
 
