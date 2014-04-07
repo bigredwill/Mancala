@@ -12,6 +12,45 @@ TO-DO
   * which UML program are we using?
 4. Create Sequence Diagram
 
+Project Specifications
+=====
+![mancala](useful/board.jpg)
+##The Game
+The board consists of two rows of pits, each. Three pieces of stones are placed in each of the 12 holes. Each player has a large store called Mancala to the right side of the board. One player starts the game by picking up all of the stones in any one of his own pits. Moving counter-clock wise, the player places one in each pit starting with the next pit until the stones run out. If you run into your own Mancala, place one stone in it. If there are more stones to go past your own Mancala, continue placing them into the opponent's pits. However, skip your opponent's Mancala. If the last stone you drop is your own Mancala, you get a free turn . If the last stone you drop is in an empty pit on your side, you get to take that stone and all of your opponents stones that are in the opposite pit. Place all captured stones in your own Mancala. The game ends when all six pits on one side of the Mancala board are empty. The player who still has stones on his side of the board when the game ends captures all of those pieces and place them in his Mancala. The player who has the most stones in his Mancala wins.
+
+##Requirements and User Interface
+`Will:` we could probably do a better job with a start screen.  Like have the ability to select different options from dropdown lists or something.
+
+###Start Screen
+* The initial screen of the game displays two buttons to select the style of the board.
+* To start the game, the user selects a board style.
+
+###Game Begins
+* This game is for two human players. (Taking turns using mouse.)
+* Initially the program displays an empty board.
+* Ask player to enter number of stones to be placed in each pit of the board.
+  * _max number is 4 per pit_
+* The two mancala (end pits) will be empty.
+
+###Game Play
+* Player selects a pit by clicking on the pit.
+ * The program updates according to above specifications.
+
+* The Program offers an undo function for the player.
+ * As a button.
+ * Only one undo at a time, 3 per turn
+ * Example  
+ > In the following picture
+ (1), suppose the player A selected the pit e. As a result, the state of the board will change to (2). If this player undos, the state of the board goes back to (1). The players can not undo again (that is, pressing the undo button at this moment will not do anything) and has to make a choice of a pit.  
+![ex1](useful/ex1.png)
+
+###Design
+Use the __MVC__ pattern.  A view (a pit) can also serve as a controller to take user input.  
+The Program can have multiple styles.  
+* Shape and color of pits  
+* Use the __Strategy__ pattern for different styles.  
+
+
 
 ##Weekly Team Report
 __Team Leaders__
