@@ -1,0 +1,19 @@
+Peer Evaluation Form
+
+Spring 2014 CS151: Object-Oriented Design
+(The information you submit here can be used to differentiate the project grades among team members.)
+Your Name:
+Your Partner's Names:
+PROJECT
+
+How much did YOUR PARTNERS contribute to complete the project ? Scale 1-10: 1 is the minimum contribution 10 is the maximum contribution.
+Partner 1's name and the scale:
+Partner 2's name and the scale:
+How much did YOU contribute to complete the project ? Scale 1-10: 1 is the minimum contribution 10 is the maximum contribution.
+Comment on your partner's involvement or contribution to the completion of the project.
+Partner 1's name and your comment:
+
+
+
+
+Partner 2's name and your comment:
