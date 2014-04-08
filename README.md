@@ -14,7 +14,15 @@ TO-DO
 
 Project Specifications
 =====
-![mancala](/useful/board.jpg)
+<<<<<<< HEAD
+<<<<<<< HEAD
+![mancala]( /useful/board.jpg)
+=======
+![mancala](/Mancala/useful/board.jpg"")
+>>>>>>> 4c41dfde2576e6bb3102ca1d4b624c1c9ac3b74c
+=======
+![mancala](/Mancala/useful/board.jpg"")
+>>>>>>> 4c41dfde2576e6bb3102ca1d4b624c1c9ac3b74c
 ##The Game
 The board consists of two rows of pits, each. Three pieces of stones are placed in each of the 12 holes. Each player has a large store called Mancala to the right side of the board. One player starts the game by picking up all of the stones in any one of his own pits. Moving counter-clock wise, the player places one in each pit starting with the next pit until the stones run out. If you run into your own Mancala, place one stone in it. If there are more stones to go past your own Mancala, continue placing them into the opponent's pits. However, skip your opponent's Mancala. If the last stone you drop is your own Mancala, you get a free turn . If the last stone you drop is in an empty pit on your side, you get to take that stone and all of your opponents stones that are in the opposite pit. Place all captured stones in your own Mancala. The game ends when all six pits on one side of the Mancala board are empty. The player who still has stones on his side of the board when the game ends captures all of those pieces and place them in his Mancala. The player who has the most stones in his Mancala wins.
 
@@ -58,10 +66,10 @@ The team leader will submit a hard copy of weekly team report in class on the gi
 
 | Due| Week        | Team Member | Submitted |
 |----|:-----------:|:-----------:| ---------:|
-|4/8 | 4/1 - 4/7   | Avi         | No        |
-|4/15| 4/8 - 4/14  | Michael     | No        |
+|4/8 | 4/1 - 4/7   | Michael         | No        |
+|4/15| 4/8 - 4/14  | Avi     | No        |
 |4/23| 4/15 - 4/21 | Will        | No        |
-|4/29| 4/22 - 4/28 | Avi         | No        |
+|4/29| 4/22 - 4/28 | Michael         | No        |
 
 __Everyone__ is responsible for individual reports, the group leader will collect individual reports and write a weekly team report.  
 __Individual Reports__
