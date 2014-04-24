@@ -8,5 +8,7 @@ public class Mancala {
     public static void main(String args[])
     {
         Model model = new Model();
-    }
+        GameFrame game = new GameFrame(model);
+        
+}
 }
