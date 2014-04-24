@@ -9,6 +9,6 @@ public class Mancala {
     {
         Model model = new Model();
         GameFrame game = new GameFrame(model);
-        
+       
 }
 }

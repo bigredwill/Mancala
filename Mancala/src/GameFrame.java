@@ -23,4 +23,11 @@ public class GameFrame extends JFrame
         setSize(800, 400);
         setVisible(true);
     }
+    
+    public void notify(Model aModel)
+    {
+        this.model = aModel;
+        board.updateModel(model);
+        board.repaint();
+    }
 }
