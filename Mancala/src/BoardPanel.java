@@ -43,27 +43,6 @@ public class BoardPanel extends JPanel implements MouseListener
         {
             g2.draw(p.getPit());
             drawMarbles(p, g2);
-//            Ellipse2D.Double pit;
-//            if (p.isIsEnd()) //if it's an end pit
-//            {
-//                pit = new Ellipse2D.Double(row, column, 50, 150);
-//                drawMarbles(p, g2, row, column, 50, 150);
-//            } else
-//            { //if it's a regular pit
-//                pit = new Ellipse2D.Double(row, column, 50, 50);
-//                drawMarbles(p, g2, row, column, 50, 50);
-//            }
-//            pits.add(pit);
-//            //draw the pit
-//            //marbles are being drawn before the pit, might need to change when stylized
-//            g2.draw(pit);
-//            row += 100;
-//            count++;
-//            if (count == 8) //end of row, both end pits have been drawn
-//            {
-//                column += 100;
-//                row = 110; //start after first endpit
-//            }
         }
 
 

@@ -1,5 +1,6 @@
 
 import java.awt.geom.Ellipse2D;
+import java.util.ArrayList;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -11,6 +12,7 @@ import javax.swing.event.ChangeListener;
 public class Model implements ChangeListener {
     
     private Pit[] board;
+    private ArrayList<ChangeListener> listeners;
     public static final int PLAYER_ONE = 1;
     public static final int PLAYER_TWO = 2;
     public static final int PLAYER_ONE_MANCALA = 0;
@@ -19,7 +21,7 @@ public class Model implements ChangeListener {
     public Model()
     {
         board = new Pit[14];
-        createBoard(4);
+        createBoard(2);
         printBoard();
         
     }
@@ -64,6 +66,26 @@ public class Model implements ChangeListener {
     }
     @Override
     public void stateChanged(ChangeEvent e) {
-        
+        for(ChangeListener c : listeners)
+        {
+            c.notify();
+        }
     }
+    /**
+     * Get listeners.
+     * @return 
+     */
+    public ArrayList<ChangeListener> getListeners()
+    {
+        return listeners;
+    }
+    /**
+     * Add listeners
+     * @param listeners 
+     */
+    public void addListeners(ChangeListener l)
+    {
+        this.listeners.add(l);
+    }
+    
 }

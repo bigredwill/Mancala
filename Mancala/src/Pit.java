@@ -109,5 +109,6 @@ public class Pit
     public void addMarble()
     {
         this.marbles++;
+        System.out.println("adding marble " + getMarbles());
     }
 }

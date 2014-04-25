@@ -1,13 +1,17 @@
 
 import java.awt.FlowLayout;
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
+ * TIME 4:31, April 25
+ * 
  * I hacked into the gameframe guys.
  *
  * @author Will Simons
  */
-public class GameFrame extends JFrame
+public class GameFrame extends JFrame implements ChangeListener
 {
 
     private Model model;
@@ -24,10 +28,10 @@ public class GameFrame extends JFrame
         setVisible(true);
     }
     
-    public void notify(Model aModel)
+
+    @Override
+    public void stateChanged(ChangeEvent e)
     {
-        this.model = aModel;
-        board.updateModel(model);
-        board.repaint();
+        
     }
 }
