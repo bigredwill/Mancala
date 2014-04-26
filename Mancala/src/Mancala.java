@@ -9,7 +9,7 @@ public class Mancala {
     {
         Model model = new Model();
         GameFrame game = new GameFrame(model);
-        model.addListeners(game);
+        model.attachListener(game);
        
 }
 }

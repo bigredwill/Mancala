@@ -9,7 +9,7 @@ import javax.swing.event.ChangeListener;
  * The model for the Mancala board game
  * @author Will
  */
-public class Model implements ChangeListener {
+public class Model {
     
     private Pit[] board;
     private ArrayList<ChangeListener> listeners;
@@ -64,13 +64,7 @@ public class Model implements ChangeListener {
         }
         
     }
-    @Override
-    public void stateChanged(ChangeEvent e) {
-        for(ChangeListener c : listeners)
-        {
-            c.notify();
-        }
-    }
+
     /**
      * Get listeners.
      * @return 
@@ -83,9 +77,17 @@ public class Model implements ChangeListener {
      * Add listeners
      * @param listeners 
      */
-    public void addListeners(ChangeListener l)
+    public void attachListener(ChangeListener l)
     {
-        this.listeners.add(l);
+        listeners.add(l);
+    }
+    
+    public void update()
+    {
+        for(ChangeListener l : listeners)
+        {
+            l.stateChanged(new ChangeEvent(this));
+        }
     }
     
 }

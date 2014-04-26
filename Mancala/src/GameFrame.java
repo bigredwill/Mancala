@@ -32,6 +32,8 @@ public class GameFrame extends JFrame implements ChangeListener
     @Override
     public void stateChanged(ChangeEvent e)
     {
-        
+        this.model = (Model) e.getSource();
+        board.updateModel(model);
+        board.repaint();
     }
 }
