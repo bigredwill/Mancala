@@ -17,7 +17,8 @@ public class PitView extends JPanel {
     Model model;
     Pit pit;
     //JLabel label;
-    JLabel piece1 = new JLabel(new ImageIcon ("/Users/Avi/Desktop/test2.jpg"));
+    //JLabel piece1 = new JLabel(new ImageIcon ("/Users/Avi/Desktop/spongebob.jpg"));
+    JLabel piece1 = new JLabel(new ImageIcon(this.getClass().getResource("Images/spongebob.jpg")));
 
     public PitView(Model model, Pit pit) {
         this.model = model;
@@ -27,10 +28,10 @@ public class PitView extends JPanel {
         //this.add(label);
         this.add(piece1);
 
-        ImageIcon image = new ImageIcon("/Users/Avi/Desktop/test2.jpg");
-        JLabel label = new JLabel("", image, JLabel.CENTER);
-        JPanel panel = new JPanel(new BorderLayout());
-        panel.add(label, BorderLayout.CENTER);
+//        ImageIcon image = new ImageIcon("/Users/Avi/Desktop/spongebob.jpg");
+//        JLabel label = new JLabel("", image, JLabel.CENTER);
+//        JPanel panel = new JPanel(new BorderLayout());
+//        panel.add(label, BorderLayout.CENTER);
 
     }
 
