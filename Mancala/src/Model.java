@@ -5,8 +5,7 @@ import javax.swing.event.ChangeListener;
 /**
  * The model for the Mancala board game
  *
- * @author Will, Avi
- * 4-27-14 4:45pm
+ * @author Will
  */
 public class Model {
 
