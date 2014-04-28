@@ -107,10 +107,11 @@ public class Model {
         }
     }
 
-    private void distributeMarbles(Pit pit) {
+    private boolean distributeMarbles(Pit pit) {
         if (pit.getMarbles() == 0) {
             //no marbles
-            return;
+            System.out.println("There are no marbles in this pit.");
+            return false;
         }
 
         int pitIndex = this.getPitIndex(pit);
@@ -165,7 +166,9 @@ public class Model {
                 currentPlayer = PLAYER_ONE;
             }
         }
+        
         System.out.println("Next turn by: " + currentPlayer);
+        return true;
 
     }
 
