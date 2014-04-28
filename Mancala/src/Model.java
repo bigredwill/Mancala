@@ -1,11 +1,11 @@
-
 import java.util.ArrayList;
 import javax.swing.event.ChangeListener;
 
 /**
  * The model for the Mancala board game
  *
- * @author Will
+ * @author Will, Avi
+ * 4-27-14 4:45pm
  */
 public class Model {
 

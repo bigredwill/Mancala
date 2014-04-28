@@ -1,4 +1,3 @@
-
 import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
 
@@ -7,8 +6,7 @@ import java.awt.geom.Ellipse2D;
  *
  * @author Avi, Will, Michael
  */
-public class Pit
-{
+public class Pit {
 
     private int player;
     private int marbles;
@@ -16,6 +14,7 @@ public class Pit
 
     /**
      * Constructs a pit with specified number of marbles.
+     * @param someMarbles 
      *
      * @param someMarbles
      */
@@ -26,30 +25,28 @@ public class Pit
         this.marbles = someMarbles;
         
     }
+    
 
 
     /**
      * Gets if end pit
+     * @return 
      *
      * @return
      */
-    public boolean isIsEnd()
-    {
+    public boolean isIsEnd() {
+    
         return isEnd;
     }
 
-    /**
-     * Sets if end pit
-     *
-     * @param isEnd
-     */
-    public void setIsEnd(boolean isEnd)
-    {
+    public void setIsEnd(boolean isEnd) {
         this.isEnd = isEnd;
     }
+    
 
     /**
      * Gets the player number (1 or 2)
+     * @return 
      *
      * @return
      */
@@ -57,6 +54,7 @@ public class Pit
     {
         return this.player;
     }
+    
 
     public void setPlayer(int aPlayer)
     {
@@ -65,6 +63,7 @@ public class Pit
 
     /**
      * Get the number of models in the pit.
+     * @return 
      *
      * @return
      */
@@ -72,9 +71,11 @@ public class Pit
     {
         return this.marbles;
     }
+    
 
     /**
      * Set the number of marbles in the pit.
+     * @param someMarbles 
      *
      * @param someMarbles
      */
@@ -82,6 +83,7 @@ public class Pit
     {
         this.marbles = someMarbles;
     }
+    
 
     /**
      * Adds one marble to the pit.
