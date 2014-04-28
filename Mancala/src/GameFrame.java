@@ -4,9 +4,10 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
  
 /**
- * TIME 4:31, April 25
+ * TIME 5:43, April 25
  *
  * I hacked into the gameframe guys.
+ * i hacked into the mainframe
  *
  * @author Will Simons
  */
@@ -23,7 +24,7 @@ public class GameFrame extends JFrame implements ChangeListener
         setContentPane(board);
        
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(800, 400);
+        setSize(800, 200);
         setVisible(true);
     }
    
