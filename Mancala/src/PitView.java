@@ -17,8 +17,8 @@ public class PitView extends JPanel {
     Model model;
     Pit pit;
     //JLabel label;
-    //JLabel piece1 = new JLabel(new ImageIcon ("/Users/Avi/Desktop/spongebob.jpg"));
-    JLabel piece1 = new JLabel(new ImageIcon(this.getClass().getResource("Images/spongebob.jpg")));
+    //JLabel imageLabel = new JLabel(new ImageIcon ("/Users/Avi/Desktop/spongebob.jpg"));
+    JLabel imageLabel = new JLabel(new ImageIcon(this.getClass().getResource("Images/pit0.jpg")));
 
     public PitView(Model model, Pit pit) {
         this.model = model;
@@ -26,13 +26,13 @@ public class PitView extends JPanel {
         //label = new JLabel("hello");
 
         //this.add(label);
-        this.add(piece1);
+        this.add(imageLabel);
 
 //        ImageIcon image = new ImageIcon("/Users/Avi/Desktop/spongebob.jpg");
 //        JLabel label = new JLabel("", image, JLabel.CENTER);
 //        JPanel panel = new JPanel(new BorderLayout());
 //        panel.add(label, BorderLayout.CENTER);
-
+        this.updateView();
     }
 
     public Model getModel() {
@@ -49,6 +49,17 @@ public class PitView extends JPanel {
 
     public void setPit(Pit pit) {
         this.pit = pit;
+    }
+    
+    public void updateView() {
+        //already know the pit
+        int numberOfMarbles = this.pit.getMarbles();
+        
+        //for all pits
+        String fileName = "Images/pit" + numberOfMarbles + ".jpg";
+        
+        this.imageLabel.setIcon(new ImageIcon(this.getClass().getResource(fileName)));
+        this.imageLabel.setText(Integer.toString(numberOfMarbles));
     }
 
 //    public JLabel getLabel() {

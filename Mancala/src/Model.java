@@ -1,5 +1,6 @@
 
 import java.util.ArrayList;
+import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 /**
@@ -168,8 +169,18 @@ public class Model {
         }
         
         System.out.println("Next turn by: " + currentPlayer);
+        
+        ChangeEvent event = new ChangeEvent(this);
+        dispatch(event);
+        
         return true;
 
+    }
+    
+    private void dispatch(ChangeEvent event) {
+        for (ChangeListener listener : this.listeners) {
+            listener.stateChanged(event);
+        }
     }
 
     private void capture(Pit lastPitVisited) {
