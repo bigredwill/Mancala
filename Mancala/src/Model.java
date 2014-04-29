@@ -1,11 +1,12 @@
+
 import java.util.ArrayList;
+import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 /**
  * The model for the Mancala board game
  *
- * @author Will, Avi
- * 4-27-14 4:45pm
+ * @author Will, Avi 4-27-14 4:45pm
  */
 public class Model {
 
@@ -98,30 +99,25 @@ public class Model {
         }
 
         //check player
-        if (pit.getPlayer() == this.currentPlayer) {
+        if (pit.getPlayer() != this.currentPlayer) {
             //valid pit
+            System.out.println("That isn't your pit.");
+            return false;
+        } else {
             return true;
         }
-
-        return false;
     }
 
-    private void distributeMarbles(Pit pit) {
-        //update the array
+    private boolean distributeMarbles(Pit pit) {
         if (pit.getMarbles() == 0) {
             //no marbles
-            return;
+            System.out.println("There are no marbles in this pit.");
+            return false;
         }
 
         int pitIndex = this.getPitIndex(pit);
-
-
-
-        //pits from pitIndex to pitIndex + marbles should be incremented by 1
         int numberOfIterations = pit.getMarbles();
         pit.setMarbles(0);
-
-        //i is the ith marbles
 
         Pit lastPitVisted = null;
         for (int i = 1; i <= numberOfIterations; i++) {
@@ -158,7 +154,60 @@ public class Model {
             }
         }
         //iterate over the changelisteners
+        this.capture(lastPitVisted);
 
+
+        if (lastPitVisted.isIsEnd() == true) {
+            System.out.println("free turn!");
+            //current player stays the same
+        } else {
+            if (currentPlayer == PLAYER_ONE) {
+                currentPlayer = PLAYER_TWO;
+            } else {
+                currentPlayer = PLAYER_ONE;
+            }
+        }
+        
+        System.out.println("Next turn by: " + currentPlayer);
+        
+        ChangeEvent event = new ChangeEvent(this);
+        dispatch(event);
+        
+        return true;
+
+    }
+    
+    private void dispatch(ChangeEvent event) {
+        for (ChangeListener listener : this.listeners) {
+            listener.stateChanged(event);
+        }
+    }
+
+    private void capture(Pit lastPitVisited) {
+        if (lastPitVisited == null) {
+            return;
+        }
+        
+        if (lastPitVisited.getMarbles() == 1 && lastPitVisited.isIsEnd() == false) {
+            //capture
+            int index = this.getPitIndex(lastPitVisited);
+            int captureIndex = Math.abs(index - board.length);
+            Pit capturePit = this.getPit(captureIndex);
+            
+            
+            if (this.currentPlayer == PLAYER_ONE) {
+                Pit player1Mancalla = board[PLAYER_ONE_MANCALA];
+                player1Mancalla.setMarbles(player1Mancalla.getMarbles() + capturePit.getMarbles() + 1);
+            } else if (this.currentPlayer == PLAYER_TWO) {
+                Pit player2Mancalla = board[PLAYER_TWO_MANCALA];
+                player2Mancalla.setMarbles(player2Mancalla.getMarbles() + capturePit.getMarbles() + 1);
+            }
+            
+            capturePit.setMarbles(0);
+            lastPitVisited.setMarbles(0);
+            
+            System.out.println("CAPTURE");
+        }
     }
 
     private int getPitIndex(Pit pit) {
@@ -184,18 +233,18 @@ public class Model {
         return endingIndex;
 
     }
-    
+
     @Override
     public String toString() {
         StringBuffer buffer = new StringBuffer();
         int counter = 0;
         for (Pit pit : board) {
-            buffer.append(pit.toString()).append( "    " +  counter).append("\n");
+            buffer.append(pit.toString()).append("    " + counter).append("\n");
             counter++;
         }
         return buffer.toString();
     }
-    
+
     public Pit getPit(int index) {
         if (index < board.length && index >= 0) {
             return board[index];
