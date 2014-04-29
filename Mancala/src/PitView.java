@@ -1,5 +1,6 @@
 
-import java.awt.BorderLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -13,7 +14,15 @@ import javax.swing.JPanel;
  * @author Avi
  */
 public class PitView extends JPanel {
+    class PitViewListener extends MouseAdapter {
 
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            System.out.println("clicked");
+            model.executeTurn(pit);
+        }
+        
+    }
     Model model;
     Pit pit;
     //JLabel label;
@@ -21,6 +30,7 @@ public class PitView extends JPanel {
     JLabel imageLabel = new JLabel(new ImageIcon(this.getClass().getResource("Images/pit0.png")));
 
     public PitView(Model model, Pit pit) {
+        
         this.model = model;
         this.pit = pit;
         //label = new JLabel("hello");
@@ -32,6 +42,7 @@ public class PitView extends JPanel {
 //        JLabel label = new JLabel("", image, JLabel.CENTER);
 //        JPanel panel = new JPanel(new BorderLayout());
 //        panel.add(label, BorderLayout.CENTER);
+        this.addMouseListener(new PitViewListener());
         this.updateView();
     }
 
