@@ -40,6 +40,7 @@ public class BoardPanel extends JPanel
             Ellipse2D.Double pit;
             if(count == 0 || count == 7) //if it's an end pit
             {
+                System.out.println("here");
                 pit = new Ellipse2D.Double(row, column, 50, 150);
                 drawMarbles(p, g2, row, column, 50, 150);
             }

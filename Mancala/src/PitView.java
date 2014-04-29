@@ -1,72 +1,83 @@
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
- *
- * @author Avi
+ * Will, 4/29, 2:30pm.  So we can substitute any image in, it works.  This is how
+ * we will do different themes.
+ * @author ODOT
  */
-public class PitView extends JPanel {
+public class PitView extends JPanel
+{
 
     Model model;
     Pit pit;
-    //JLabel label;
-    //JLabel imageLabel = new JLabel(new ImageIcon ("/Users/Avi/Desktop/spongebob.jpg"));
-    JLabel imageLabel = new JLabel(new ImageIcon(this.getClass().getResource("Images/pit0.png")));
+    JLabel imageLabel;
+    PitIcon icon;
 
-    public PitView(Model model, Pit pit) {
+    /**
+     * Constructs a pit 
+     * @param model
+     * @param pit 
+     */
+    public PitView(Model model, Pit pit)
+    {
         this.model = model;
         this.pit = pit;
-        //label = new JLabel("hello");
-
-        //this.add(label);
+        imageLabel = new JLabel(new ImageIcon(this.getClass().getResource("Images/pit0.png")));
         this.add(imageLabel);
+        String backg = "";
+        
+        if(this.pit.isIsEnd())
+        {
+            backg = "Images/pitEnd.png";
+            icon = new PitIcon(pit.getMarbles(), backg, true);
+        } else {
+            backg = "Images/pit0.png";
+            icon  = new PitIcon(pit.getMarbles(), backg, false);
+        }
+        
+        
+        imageLabel.setIcon(icon);
 
-//        ImageIcon image = new ImageIcon("/Users/Avi/Desktop/spongebob.jpg");
-//        JLabel label = new JLabel("", image, JLabel.CENTER);
-//        JPanel panel = new JPanel(new BorderLayout());
-//        panel.add(label, BorderLayout.CENTER);
         this.updateView();
     }
-
-    public Model getModel() {
+    
+    public Model getModel()
+    {
         return model;
     }
 
-    public void setModel(Model model) {
+    public void setModel(Model model)
+    {
         this.model = model;
     }
 
-    public Pit getPit() {
+    public Pit getPit()
+    {
         return pit;
     }
 
-    public void setPit(Pit pit) {
+    public void setPit(Pit pit)
+    {
         this.pit = pit;
     }
-    
-    public void updateView() {
-        //already know the pit
+
+    /**
+     * Updates the view of a single pit for the 
+     */
+    public void updateView()
+    {
         int numberOfMarbles = this.pit.getMarbles();
-        
-        //for all pits
-        String fileName = "Images/pit" + numberOfMarbles + ".png";
-        
-        this.imageLabel.setIcon(new ImageIcon(this.getClass().getResource(fileName)));
+        icon.setNumMarbs(numberOfMarbles);
         this.imageLabel.setText(Integer.toString(numberOfMarbles));
     }
 
-//    public JLabel getLabel() {
-//        return label;
-//    }
-//
-//    public void setLabel(JLabel label) {
-//        this.label = label;
-//    }
 }

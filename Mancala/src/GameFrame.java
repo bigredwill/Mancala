@@ -25,7 +25,7 @@ public class GameFrame extends JFrame implements ChangeListener {
     public GameFrame(Model aModel) {
         this.model = aModel;
         //board = new BoardPanel(model);
-
+        
         model.addListener(this);
         Container parent = this.getContentPane();
         parent.setLayout(new BorderLayout());
@@ -83,7 +83,5 @@ public class GameFrame extends JFrame implements ChangeListener {
             pitView.updateView();
         }
         this.repaint();
-        //board.updateModel(model);
-        //board.repaint();
     }
 }
