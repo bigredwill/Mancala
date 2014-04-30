@@ -1,10 +1,6 @@
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.Icon;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,7 +17,16 @@ public class PitView extends JPanel
     Pit pit;
     JLabel imageLabel;
     PitIcon icon;
+    
+    class PitViewListener extends MouseAdapter {
 
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            System.out.println("clicked");
+            model.executeTurn(pit);
+        }
+        
+    }
     /**
      * Constructs a pit 
      * @param model
@@ -46,7 +51,7 @@ public class PitView extends JPanel
         
         
         imageLabel.setIcon(icon);
-
+        this.addMouseListener(new PitView.PitViewListener());
         this.updateView();
     }
     

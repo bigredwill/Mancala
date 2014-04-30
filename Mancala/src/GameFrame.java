@@ -67,6 +67,8 @@ public class GameFrame extends JFrame implements ChangeListener {
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1100, 250);
+        this.setResizable(false);
+        this.setTitle("#ODOT MANCALLA");
         setVisible(true);
     }
 
