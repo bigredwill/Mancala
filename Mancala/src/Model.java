@@ -170,6 +170,8 @@ public class Model {
         
         System.out.println("Next turn by: " + currentPlayer);
         
+        System.out.println(this.checkEndGame() + "\n");
+        
         ChangeEvent event = new ChangeEvent(this);
         dispatch(event);
         
@@ -250,5 +252,27 @@ public class Model {
             return board[index];
         }
         return null;
+    }
+
+    private boolean checkEndGame() {
+        boolean isGameOver = false;
+        
+        for (int i = 1; i < board.length; i++) {
+            if (i != PLAYER_TWO_MANCALA) {
+                
+                
+                
+                //check if this pit is empty
+                if (board[i].getMarbles() == 0) {
+                    isGameOver = true;
+                } else {
+                    isGameOver = false;
+                    return isGameOver;
+                }
+            }
+        }
+        isGameOver = true;
+        return isGameOver;
+        
     }
 }
