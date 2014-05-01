@@ -67,12 +67,7 @@ public class PitIcon extends ImageIcon
     {
         int yPos = -20;
         int xPos = -30;
-//        for(int i = 0; i < 1; i++)
-//        {   
-//            g.drawImage(b, xPos,yPos, c); 
-//            xPos+=20;
-//            if((i+1)%4 == 0) { yPos += 20; xPos = -30;}
-//        }
+
         Random rand = new Random(System.currentTimeMillis() * 30);
         for (int i = 0; i < numMarbs; i++)
         {
