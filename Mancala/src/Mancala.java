@@ -1,5 +1,4 @@
 
-import java.awt.Color;
 import java.util.Scanner;
 
 /**
@@ -13,6 +12,7 @@ public class Mancala {
         Model model = new Model();
         GameFrame game = new GameFrame(model);
         Scanner reader = new Scanner(System.in);
+
         do {
             System.out.println(model.toString());
             System.out.println("Enter an index");
