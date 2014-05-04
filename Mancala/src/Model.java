@@ -78,6 +78,7 @@ public class Model {
         }
         //if it was valid, update the model's pit array to what should happen
         this.distributeMarbles(pit);
+        checkEndGame();
         return true;
 
 
@@ -152,6 +153,26 @@ public class Model {
                 //not an end pit just add one
                 currentPit.setMarbles(currentPit.getMarbles() + 1);
             }
+        }
+        
+        //Gets the current player to check for an empty side.
+        int player;
+        if(this.currentPlayer == PLAYER_ONE)
+        {
+            player = PLAYER_ONE;
+        } else {
+            player = PLAYER_TWO;
+        }
+        
+        //Start with empty side, if not empty
+        boolean emptySide = true;
+        for(int i = player; i < player + 6; i ++)
+        {
+            if(board[i].getMarbles()>0)
+            {
+                emptySide = false;
+                break;
+            }  
         }
         //iterate over the changelisteners
         this.capture(lastPitVisted);
@@ -272,6 +293,7 @@ public class Model {
             }
         }
         isGameOver = true;
+        System.out.println("GAME OVER");
         return isGameOver;
         
     }
