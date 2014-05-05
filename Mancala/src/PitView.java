@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.ImageIcon;
@@ -38,6 +39,7 @@ public class PitView extends JPanel
         this.pit = pit;
         imageLabel = new JLabel(new ImageIcon(this.getClass().getResource("Images/pit0.png")));
         this.add(imageLabel);
+        //this.setBackground(Color.red);
         String backg = "";
         
         if(this.pit.isIsEnd())
