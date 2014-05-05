@@ -9,8 +9,9 @@ import java.util.Scanner;
 public class Mancala {
 
     public static void main(String args[]) {
-        Model model = new Model();
-        GameFrame game = new GameFrame(model);
+        Model model = new Model(3);
+        //GameFrame game = new GameFrame(model);
+        HomeFrame home = new HomeFrame(model);
         Scanner reader = new Scanner(System.in);
 
         do {

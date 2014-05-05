@@ -18,9 +18,9 @@ public class Model {
     public static final int PLAYER_ONE_MANCALA = 0;
     public static final int PLAYER_TWO_MANCALA = 7;
 
-    public Model() {
+    public Model(int numMarbles) {
         board = new Pit[14];
-        createBoard(4);
+        createBoard(numMarbles);
         //();
 
     }
