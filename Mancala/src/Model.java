@@ -1,4 +1,5 @@
 
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -17,10 +18,12 @@ public class Model {
     public static final int PLAYER_TWO = 2;
     public static final int PLAYER_ONE_MANCALA = 0;
     public static final int PLAYER_TWO_MANCALA = 7;
+    public static Color color;
 
-    public Model(int numMarbles) {
+    public Model(int numMarbles, Color aColor) {
         board = new Pit[14];
         createBoard(numMarbles);
+        color = aColor;
         //();
 
     }
@@ -275,7 +278,7 @@ public class Model {
         return null;
     }
 
-    private boolean checkEndGame() {
+    public boolean checkEndGame() {
         boolean isGameOver = false;
         
         for (int i = 1; i < board.length; i++) {
@@ -296,5 +299,10 @@ public class Model {
         System.out.println("GAME OVER");
         return isGameOver;
         
+    }
+    
+    public Color getColor()
+    {
+        return this.color;
     }
 }

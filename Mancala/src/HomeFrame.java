@@ -20,15 +20,15 @@ import javax.swing.JTextField;
  */
 public class HomeFrame extends JFrame
 {
-    private final Model model;
+    private Model model;
     
-    public HomeFrame(Model aModel)
+    public HomeFrame()
     {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         final JPanel mainFrame = new JPanel();
         JButton whiteTheme = new JButton("White Theme");
         JButton blackTheme = new JButton("Black Theme");
-        model = aModel;
+        model = new Model(4, Color.WHITE);
         
         final JTextField numMarbles = new JTextField("4");
         
@@ -50,7 +50,8 @@ public class HomeFrame extends JFrame
                 }
                 else
                 {
-                    GameFrame game = new GameFrame(new Model(Integer.parseInt(numMarbles.getText())), Color.WHITE);
+                   // GameFrame game = new GameFrame(new Model(marbles), Color.WHITE);
+                    model = new Model(marbles, Color.WHITE);
                     setVisible(false);
                 }
             }
@@ -60,9 +61,23 @@ public class HomeFrame extends JFrame
         {
             public void actionPerformed(ActionEvent e)
             {
-                GameFrame game = new GameFrame(model, Color.BLACK);
-                setVisible(false);
+                int marbles = Integer.parseInt(numMarbles.getText());
+                if (marbles > 4 || marbles < 1)
+                {
+                    JOptionPane.showMessageDialog(mainFrame, "Enter a number between 1 and 4");
+                }
+                else
+                {
+                    ///GameFrame game = new GameFrame(new Model(marbles), Color.BLACK);
+                    model = new Model(marbles, Color.BLACK);
+                    setVisible(false);
+                }
             }
         });
+    }
+    
+    public Model getModel()
+    {
+        return this.model;
     }
 }

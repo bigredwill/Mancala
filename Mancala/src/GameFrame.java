@@ -17,13 +17,13 @@ import javax.swing.event.ChangeListener;
  *
  * @author Will Simons
  */
-public class GameFrame extends JFrame implements ChangeListener {
+public class GameFrame extends JFrame implements GameBoard {
 
     private Model model;
     private ArrayList<PitView> pitViews = new ArrayList<>();
     //private BoardPanel board;
 
-    public GameFrame(Model aModel, Color color) {
+    public GameFrame(Model aModel) {
         this.model = aModel;
         //board = new BoardPanel(model);
         
@@ -35,8 +35,8 @@ public class GameFrame extends JFrame implements ChangeListener {
         //make end pits
         PitView player1EndPit = new PitView(model, model.getPit(Model.PLAYER_ONE_MANCALA));
         PitView player2EndPit = new PitView(model, model.getPit(Model.PLAYER_TWO_MANCALA));
-        player1EndPit.setBackground(color);
-        player2EndPit.setBackground(color);
+        player1EndPit.setBackground(model.getColor());
+        player2EndPit.setBackground(model.getColor());
 
         pitViews.add(player1EndPit);
         pitViews.add(player2EndPit);
@@ -45,21 +45,21 @@ public class GameFrame extends JFrame implements ChangeListener {
         parent.add(player2EndPit, BorderLayout.WEST);
 
         JPanel regularPitPanel = new JPanel();
-        regularPitPanel.setBackground(color);
+        regularPitPanel.setBackground(model.getColor());
 
-        this.addPitView(8, regularPitPanel, color);
-        this.addPitView(9, regularPitPanel, color);
-        this.addPitView(10, regularPitPanel, color);
-        this.addPitView(11, regularPitPanel, color);
-        this.addPitView(12, regularPitPanel, color);
-        this.addPitView(13, regularPitPanel, color);
+        this.addPitView(8, regularPitPanel, model.getColor());
+        this.addPitView(9, regularPitPanel, model.getColor());
+        this.addPitView(10, regularPitPanel, model.getColor());
+        this.addPitView(11, regularPitPanel, model.getColor());
+        this.addPitView(12, regularPitPanel, model.getColor());
+        this.addPitView(13, regularPitPanel, model.getColor());
         
-        this.addPitView(6, regularPitPanel, color);
-        this.addPitView(5, regularPitPanel, color);
-        this.addPitView(4, regularPitPanel, color);
-        this.addPitView(3, regularPitPanel, color);
-        this.addPitView(2, regularPitPanel, color);
-        this.addPitView(1, regularPitPanel, color);
+        this.addPitView(6, regularPitPanel, model.getColor());
+        this.addPitView(5, regularPitPanel, model.getColor());
+        this.addPitView(4, regularPitPanel, model.getColor());
+        this.addPitView(3, regularPitPanel, model.getColor());
+        this.addPitView(2, regularPitPanel, model.getColor());
+        this.addPitView(1, regularPitPanel, model.getColor());
 
 
         SpringUtilities.makeGrid(regularPitPanel, 2, 6, 0, 0, 5, 5);
@@ -76,7 +76,7 @@ public class GameFrame extends JFrame implements ChangeListener {
         setVisible(true);
     }
 
-    private void addPitView(int index, JPanel regularPitPanel, Color color) {
+    public void addPitView(int index, JPanel regularPitPanel, Color color) {
         PitView p = new PitView(model, model.getPit(index));
         p.setBackground(color);
         this.pitViews.add(p);

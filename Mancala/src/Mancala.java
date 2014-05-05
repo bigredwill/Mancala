@@ -9,9 +9,11 @@ import java.util.Scanner;
 public class Mancala {
 
     public static void main(String args[]) {
-        Model model = new Model(3);
+        //Model model = new Model(4);
         //GameFrame game = new GameFrame(model);
-        HomeFrame home = new HomeFrame(model);
+        HomeFrame home = new HomeFrame();
+        Model model = home.getModel();
+        GameFrame game = new GameFrame(model);
         Scanner reader = new Scanner(System.in);
 
         do {
@@ -21,7 +23,7 @@ public class Mancala {
             int index = Integer.parseInt(text);
             Pit pit = model.getPit(index);
             model.executeTurn(pit);
-        } while (true);
+        } while (!model.checkEndGame());
 
     }
 }
