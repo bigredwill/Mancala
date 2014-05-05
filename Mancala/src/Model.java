@@ -11,8 +11,10 @@ import javax.swing.event.ChangeListener;
 public class Model {
 
     private Pit[] board;
+    private Pit[] previousBoard = null;
     private ArrayList<ChangeListener> listeners = new ArrayList<>();
     private int currentPlayer = PLAYER_ONE;
+    private int previousPlayer = PLAYER_TWO;
     public static final int PLAYER_ONE = 1;
     public static final int PLAYER_TWO = 2;
     public static final int PLAYER_ONE_MANCALA = 0;
@@ -115,6 +117,8 @@ public class Model {
             System.out.println("There are no marbles in this pit.");
             return false;
         }
+        
+        setUndo();
 
         int pitIndex = this.getPitIndex(pit);
         int numberOfIterations = pit.getMarbles();
@@ -154,25 +158,22 @@ public class Model {
                 currentPit.setMarbles(currentPit.getMarbles() + 1);
             }
         }
-        
+
         //Gets the current player to check for an empty side.
         int player;
-        if(this.currentPlayer == PLAYER_ONE)
-        {
+        if (this.currentPlayer == PLAYER_ONE) {
             player = PLAYER_ONE;
         } else {
             player = PLAYER_TWO;
         }
-        
+
         //Start with empty side, if not empty
         boolean emptySide = true;
-        for(int i = player; i < player + 6; i ++)
-        {
-            if(board[i].getMarbles()>0)
-            {
+        for (int i = player; i < player + 6; i++) {
+            if (board[i].getMarbles() > 0) {
                 emptySide = false;
                 break;
-            }  
+            }
         }
         //iterate over the changelisteners
         this.capture(lastPitVisted);
@@ -188,18 +189,40 @@ public class Model {
                 currentPlayer = PLAYER_ONE;
             }
         }
+
         
+
         System.out.println("Next turn by: " + currentPlayer);
-        
+
         System.out.println(this.checkEndGame() + "\n");
-        
+
         ChangeEvent event = new ChangeEvent(this);
         dispatch(event);
-        
+
+
         return true;
 
     }
-    
+
+    public boolean canUndo() {
+        if (previousBoard != null) {
+            return true;
+        }
+        return false;
+    }
+
+    private void setUndo() {
+        Pit[] temp = new Pit[this.board.length];
+        
+        
+        for (int i = 0; i < board.length; i++) {
+            Pit p = new Pit(board[i]);
+            temp[i] = p;
+        }
+        this.previousBoard = temp;
+        this.previousPlayer = this.currentPlayer;
+    }
+
     private void dispatch(ChangeEvent event) {
         for (ChangeListener listener : this.listeners) {
             listener.stateChanged(event);
@@ -210,14 +233,14 @@ public class Model {
         if (lastPitVisited == null) {
             return;
         }
-        
+
         if (lastPitVisited.getMarbles() == 1 && lastPitVisited.isIsEnd() == false) {
             //capture
             int index = this.getPitIndex(lastPitVisited);
             int captureIndex = Math.abs(index - board.length);
             Pit capturePit = this.getPit(captureIndex);
-            
-            
+
+
             if (this.currentPlayer == PLAYER_ONE) {
                 Pit player1Mancalla = board[PLAYER_ONE_MANCALA];
                 player1Mancalla.setMarbles(player1Mancalla.getMarbles() + capturePit.getMarbles() + 1);
@@ -225,10 +248,10 @@ public class Model {
                 Pit player2Mancalla = board[PLAYER_TWO_MANCALA];
                 player2Mancalla.setMarbles(player2Mancalla.getMarbles() + capturePit.getMarbles() + 1);
             }
-            
+
             capturePit.setMarbles(0);
             lastPitVisited.setMarbles(0);
-            
+
             System.out.println("CAPTURE");
         }
     }
@@ -275,14 +298,22 @@ public class Model {
         return null;
     }
 
+    public int getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public void setCurrentPlayer(int currentPlayer) {
+        this.currentPlayer = currentPlayer;
+    }
+
     private boolean checkEndGame() {
         boolean isGameOver = false;
-        
+
         for (int i = 1; i < board.length; i++) {
             if (i != PLAYER_TWO_MANCALA) {
-                
-                
-                
+
+
+
                 //check if this pit is empty
                 if (board[i].getMarbles() == 0) {
                     isGameOver = true;
@@ -295,6 +326,20 @@ public class Model {
         isGameOver = true;
         System.out.println("GAME OVER");
         return isGameOver;
-        
+
+    }
+
+    void undo() {
+        if (canUndo()) {
+            for (int i = 0; i < board.length; i++) {
+                board[i].copyPit(previousBoard[i]);
+            }
+            previousBoard = null;
+            this.currentPlayer = this.previousPlayer;
+            ChangeEvent event = new ChangeEvent(this);
+            dispatch(event);
+            
+            System.out.println("undo method called");
+        }
     }
 }
