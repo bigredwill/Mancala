@@ -27,8 +27,8 @@ public class PitIcon extends ImageIcon
     boolean isEnd;
     boolean firstPaint;
     String bg;
-    String mb = "/Images/marble.png";
-    
+//    String mb = "/Images/marble.png";
+    String mb = "/Images/greenMarb.png";
     /**
      * Constructs a pit with a num of marbles.
      * @param numMarbs
@@ -44,7 +44,7 @@ public class PitIcon extends ImageIcon
         this.bg = bg;
         if (isEnd)
         {
-            height = 200;
+            height = 225;
             width = 100;
         } else
         {

@@ -31,7 +31,8 @@ public class GameFrame extends JFrame implements GameBoard {
         //board = new BoardPanel(model);
         
         model.addListener(this);
-        Container parent = this.getContentPane();
+//        Container parent = this.getContentPane();
+        JPanel parent = new JPanel();
         parent.setLayout(new BorderLayout());
 
 
@@ -66,6 +67,7 @@ public class GameFrame extends JFrame implements GameBoard {
             }
         });
         undoPanel.add(undoButton, BorderLayout.NORTH);
+        undoPanel.setBackground(Color.RED);
         parent.add(undoPanel, BorderLayout.SOUTH);
         
         JPanel regularPitPanel = new JPanel();
@@ -90,7 +92,7 @@ public class GameFrame extends JFrame implements GameBoard {
         parent.add(regularPitPanel, BorderLayout.CENTER);
 
 
-
+        add(parent);
         //setContentPane(board);
         
         setDefaultCloseOperation(EXIT_ON_CLOSE);

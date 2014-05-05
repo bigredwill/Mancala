@@ -37,17 +37,19 @@ public class PitView extends JPanel
     {
         this.model = model;
         this.pit = pit;
-        imageLabel = new JLabel(new ImageIcon(this.getClass().getResource("Images/pit0.png")));
+        imageLabel = new JLabel();
         this.add(imageLabel);
         //this.setBackground(Color.red);
         String backg = "";
         
         if(this.pit.isIsEnd())
         {
-            backg = "Images/pitEnd.png";
+//            backg = "Images/pitEnd.png";
+            backg = "Images/blueEnd.png";
             icon = new PitIcon(pit.getMarbles(), backg, true);
         } else {
-            backg = "Images/pit0.png";
+//            backg = "Images/pit0.png";
+            backg = "Images/pitBlue.png";
             icon  = new PitIcon(pit.getMarbles(), backg, false);
         }
         
