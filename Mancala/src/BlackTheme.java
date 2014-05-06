@@ -17,12 +17,14 @@ public class BlackTheme implements BoardTheme {
 
     @Override
     public String getEndPitFile() {
-        return "/Images/endPit2.png";
+//        return "/Images/endPit2.png";
+        return "/Images/tripEnd.gif";
     }
 
     @Override
     public String getPitFile() {
-        return "/Images/pit2.png";
+//        return "/Images/pit2.png";
+        return "/Images/tripPit.gif";
     }
     
     

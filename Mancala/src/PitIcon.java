@@ -1,6 +1,7 @@
 
 import java.awt.Component;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -69,8 +70,9 @@ public class PitIcon extends ImageIcon {
         } catch (IOException ex) {
             Logger.getLogger(PitIcon.class.getName()).log(Level.SEVERE, "couldn't paint icon", ex);
         }
-
-        g.drawImage(in, 0, 0, c);
+        
+        Graphics2D g2 = (Graphics2D) g;
+        g2.drawImage(in, 0, 0, c);
         paintMarbles(marb, c, g);
     }
 

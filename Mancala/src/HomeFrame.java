@@ -1,5 +1,6 @@
 
 import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -70,7 +71,7 @@ public class HomeFrame extends JFrame
                     JOptionPane.showMessageDialog(mainFrame, "Enter a number between 1 and 4");
                 }
                 else
-                {
+                {   
                     ///GameFrame game = new GameFrame(new Model(marbles), Color.BLACK);
                     model = new Model(marbles, Color.BLACK);
                     setVisible(false);
