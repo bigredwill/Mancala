@@ -220,7 +220,8 @@ public class Model
 //            }
 //        }
         //iterate over the changelisteners
-        this.capture(lastPitVisted);
+        if(lastPitVisted.getPlayer() == currentPlayer)
+            this.capture(lastPitVisted);
 
 
         if (lastPitVisted.isIsEnd() == true)
