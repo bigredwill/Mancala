@@ -42,6 +42,7 @@ public class PitIcon extends ImageIcon {
         this.numMarbs = numMarbs;
         this.oldNum = 0;
         this.theme = theme;
+        this.isEnd = isEnd;
         if (isEnd) {
             height = 225;
             width = 100;
