@@ -18,59 +18,62 @@ import javax.swing.JTextField;
  *
  * @author michaeldaniels
  */
-public class HomeFrame extends JFrame
+public class HomePanel extends JPanel
 {
     private Model model;
-    
-    public HomeFrame()
+    private boolean gameSelected;
+    public HomePanel(Model m)
     {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        final JPanel mainFrame = new JPanel();
+        gameSelected = false;
+        model = m;
+        
         JButton whiteTheme = new JButton("White Theme");
         JButton blackTheme = new JButton("Black Theme");
-        model = new Model(4, Color.WHITE);
-        
+
         final JTextField numMarbles = new JTextField("4");
         
-        mainFrame.add(whiteTheme);
-        mainFrame.add(blackTheme);
-        mainFrame.add(numMarbles);
-        setContentPane(mainFrame);
+        add(whiteTheme);
+        add(blackTheme);
+        add(numMarbles);
+        //System.out.println("created");
         setVisible(true);
-        pack();
         
         whiteTheme.addActionListener(new ActionListener()
         {
+            @Override
             public void actionPerformed(ActionEvent e)
             {
                 int marbles = Integer.parseInt(numMarbles.getText());
                 if (marbles > 4 || marbles < 1)
                 {
-                    JOptionPane.showMessageDialog(mainFrame, "Enter a number between 1 and 4");
+                    JOptionPane.showMessageDialog(numMarbles, "Enter a number between 1 and 4");
                 }
                 else
                 {
                    // GameFrame game = new GameFrame(new Model(marbles), Color.WHITE);
                     model = new Model(marbles, Color.WHITE);
-                    setVisible(false);
+                    gameSelected = true;
+                    System.out.println("true");
                 }
             }
         });
         
+        
         blackTheme.addActionListener(new ActionListener()
         {
+            @Override
             public void actionPerformed(ActionEvent e)
             {
                 int marbles = Integer.parseInt(numMarbles.getText());
                 if (marbles > 4 || marbles < 1)
                 {
-                    JOptionPane.showMessageDialog(mainFrame, "Enter a number between 1 and 4");
+                    JOptionPane.showMessageDialog(numMarbles, "Enter a number between 1 and 4");
                 }
                 else
                 {
-                    ///GameFrame game = new GameFrame(new Model(marbles), Color.BLACK);
                     model = new Model(marbles, Color.BLACK);
-                    setVisible(false);
+                    gameSelected = true;
+                    System.out.println("true");
                 }
             }
         });
@@ -79,5 +82,11 @@ public class HomeFrame extends JFrame
     public Model getModel()
     {
         return this.model;
+    }
+    
+    public boolean isGameSelected()
+    {
+        System.out.println("isGameSelected " + gameSelected);
+        return this.gameSelected;
     }
 }

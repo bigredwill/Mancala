@@ -25,6 +25,12 @@ public class Model
     public static Color color;
     private int undoCounter = 0;
 
+    public Model()
+    {
+        board = new Pit[14];
+        createBoard(4);
+        color = Color.WHITE;
+    }
     public Model(int numMarbles, Color aColor)
     {
         board = new Pit[14];

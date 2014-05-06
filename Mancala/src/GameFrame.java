@@ -18,7 +18,7 @@ import javax.swing.event.ChangeListener;
  * @author Will Simons
  */
 
-public class GameFrame extends JFrame implements GameBoard {
+public class GameFrame extends JFrame implements ChangeListener {
 
     private Model model;
     private ArrayList<PitView> pitViews = new ArrayList<>();
@@ -28,10 +28,7 @@ public class GameFrame extends JFrame implements GameBoard {
 
     public GameFrame(Model aModel) {
         this.model = aModel;
-        //board = new BoardPanel(model);
-        
         model.addListener(this);
-//        Container parent = this.getContentPane();
         JPanel parent = new JPanel();
         parent.setLayout(new BorderLayout());
 

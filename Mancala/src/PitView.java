@@ -18,6 +18,12 @@ public class PitView extends JPanel
     Pit pit;
     JLabel imageLabel;
     PitIcon icon;
+    private static final String blackEnd = "Images/blueEnd.png";
+    private static final String blackReg = "Images/pitBlue.png";
+    private static final String whiteEnd = "Images/pitEnd";
+    private static final String whiteReg = "Images/pit0.png";
+    private String end;
+    private String reg;
     
     class PitViewListener extends MouseAdapter {
 
@@ -39,18 +45,23 @@ public class PitView extends JPanel
         this.pit = pit;
         imageLabel = new JLabel();
         this.add(imageLabel);
-        //this.setBackground(Color.red);
-        String backg = "";
+        if(model.getColor()== Color.BLACK)
+        {
+            end = blackEnd;
+            reg = blackReg;
+        } else {
+            end = whiteEnd;
+            reg = whiteReg;
+        }
+        System.out.println("creating pit");
         
         if(this.pit.isIsEnd())
         {
-//            backg = "Images/pitEnd.png";
-            backg = "Images/blueEnd.png";
-            icon = new PitIcon(pit.getMarbles(), backg, true);
+
+            icon = new PitIcon(pit.getMarbles(), end, true);
         } else {
-//            backg = "Images/pit0.png";
-            backg = "Images/pitBlue.png";
-            icon  = new PitIcon(pit.getMarbles(), backg, false);
+
+            icon  = new PitIcon(pit.getMarbles(), reg, false);
         }
         
         

@@ -63,12 +63,14 @@ public class PitIcon extends ImageIcon
         BufferedImage marb = null;
         try
         {
+            
             in = ImageIO.read(this.getClass().getResource(bg));
             marb = ImageIO.read(this.getClass().getResource(mb));
         } catch (IOException ex)
         {
             Logger.getLogger(PitIcon.class.getName()).log(Level.SEVERE, "couldn't paint icon", ex);
         }
+        
 
         g.drawImage(in, 0, 0, c);
         paintMarbles(marb, c, g);
