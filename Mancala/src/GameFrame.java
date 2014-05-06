@@ -25,6 +25,7 @@ public class GameFrame extends JFrame implements GameBoard {
     //private BoardPanel board;
 
     public GameFrame(Model aModel, BoardTheme theme) {
+        this.setBackground(Color.RED);
         this.theme = theme;
         this.model = aModel;
         //board = new BoardPanel(model);
