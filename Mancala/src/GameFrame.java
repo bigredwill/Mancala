@@ -1,14 +1,12 @@
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 /**
  * TIME 5:43, April 25
@@ -19,14 +17,15 @@ import javax.swing.event.ChangeListener;
  */
 
 public class GameFrame extends JFrame implements GameBoard {
-
     private Model model;
     private ArrayList<PitView> pitViews = new ArrayList<>();
     private JButton undoButton;
     private JLabel currentPlayer;
+    private BoardTheme theme;
     //private BoardPanel board;
 
-    public GameFrame(Model aModel) {
+    public GameFrame(Model aModel, BoardTheme theme) {
+        this.theme = theme;
         this.model = aModel;
         //board = new BoardPanel(model);
         
@@ -37,8 +36,8 @@ public class GameFrame extends JFrame implements GameBoard {
 
 
         //make end pits
-        PitView player1EndPit = new PitView(model, model.getPit(Model.PLAYER_ONE_MANCALA));
-        PitView player2EndPit = new PitView(model, model.getPit(Model.PLAYER_TWO_MANCALA));
+        PitView player1EndPit = new PitView(model, model.getPit(Model.PLAYER_ONE_MANCALA), this.theme);
+        PitView player2EndPit = new PitView(model, model.getPit(Model.PLAYER_TWO_MANCALA), this.theme);
         player1EndPit.setBackground(model.getColor());
         player2EndPit.setBackground(model.getColor());
         
@@ -108,7 +107,7 @@ public class GameFrame extends JFrame implements GameBoard {
     
 
     public void addPitView(int index, JPanel regularPitPanel, Color color) {
-        PitView p = new PitView(model, model.getPit(index));
+        PitView p = new PitView(model, model.getPit(index), theme);
         p.setBackground(color);
         this.pitViews.add(p);
         regularPitPanel.add(p);
@@ -129,5 +128,9 @@ public class GameFrame extends JFrame implements GameBoard {
         }
         this.updateCurrentPlayer();
         this.repaint();
+    }
+
+    boolean styleSelected() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

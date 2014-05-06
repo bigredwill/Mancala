@@ -17,6 +17,7 @@ public class PitView extends JPanel
     Model model;
     Pit pit;
     JLabel imageLabel;
+    BoardTheme theme;
     PitIcon icon;
     
     class PitViewListener extends MouseAdapter {
@@ -33,24 +34,23 @@ public class PitView extends JPanel
      * @param model
      * @param pit 
      */
-    public PitView(Model model, Pit pit)
+    public PitView(Model model, Pit pit, BoardTheme theme)
     {
         this.model = model;
         this.pit = pit;
         imageLabel = new JLabel();
         this.add(imageLabel);
         //this.setBackground(Color.red);
-        String backg = "";
-        
+        this.theme = theme;
         if(this.pit.isIsEnd())
         {
 //            backg = "Images/pitEnd.png";
-            backg = "Images/blueEnd.png";
-            icon = new PitIcon(pit.getMarbles(), backg, true);
+            
+            icon = new PitIcon(pit.getMarbles(), true, theme);
         } else {
 //            backg = "Images/pit0.png";
-            backg = "Images/pitBlue.png";
-            icon  = new PitIcon(pit.getMarbles(), backg, false);
+            
+            icon  = new PitIcon(pit.getMarbles(), false, theme);
         }
         
         

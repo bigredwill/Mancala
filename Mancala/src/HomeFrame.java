@@ -52,7 +52,10 @@ public class HomeFrame extends JFrame
                 {
                    // GameFrame game = new GameFrame(new Model(marbles), Color.WHITE);
                     model = new Model(marbles, Color.WHITE);
+                    
                     setVisible(false);
+                    GameFrame gf = new GameFrame(model, new WhiteTheme());
+                    gf.setVisible(true);
                 }
             }
         });
@@ -71,6 +74,8 @@ public class HomeFrame extends JFrame
                     ///GameFrame game = new GameFrame(new Model(marbles), Color.BLACK);
                     model = new Model(marbles, Color.BLACK);
                     setVisible(false);
+                    GameFrame gf = new GameFrame(model, new BlackTheme());
+                    gf.setVisible(true);
                 }
             }
         });

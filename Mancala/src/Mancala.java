@@ -6,33 +6,30 @@ import java.util.Scanner;
  *
  * @author Will
  */
-public class Mancala
-{
+public class Mancala {
 
-    public static void main(String args[])
-    {
-        while(true)
-        {
-            //Model model = new Model(4);
-            //GameFrame game = new GameFrame(model);
-            HomeFrame home = new HomeFrame();
-            Model model = home.getModel();
-            GameFrame game = new GameFrame(model);
-            Scanner reader = new Scanner(System.in);
-            while (!game.styleSelected())
-            {
-                //home screen selection loop
-            }
-            do
-            {
-                //game loop
-                System.out.println(model.toString());
-                System.out.println("Enter an index");
-                String text = reader.next();
-                int index = Integer.parseInt(text);
-                Pit pit = model.getPit(index);
-                model.executeTurn(pit);
-            } while (!model.checkEndGame());
-        }
+    public static void main(String args[]) {
+        //Model model = new Model(4);
+        //GameFrame game = new GameFrame(model);
+        HomeFrame home = new HomeFrame();
+        
+        home.pack();
+        home.setVisible(true);
+        
+        //Model model = home.getModel();
+        //GameFrame game = new GameFrame(model);
+        //Scanner reader = new Scanner(System.in);
+        //while (!game.styleSelected()) {
+            //home screen selection loop
+        //}
+//        do {
+//            //game loop
+//            System.out.println(model.toString());
+//            System.out.println("Enter an index");
+//            String text = reader.next();
+//            int index = Integer.parseInt(text);
+//            Pit pit = model.getPit(index);
+//            model.executeTurn(pit);
+//        } while (!model.checkEndGame());
     }
 }
