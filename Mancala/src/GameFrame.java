@@ -1,6 +1,7 @@
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,6 +22,8 @@ public class GameFrame extends JFrame implements GameBoard {
     private ArrayList<PitView> pitViews = new ArrayList<>();
     private JButton undoButton;
     private JLabel currentPlayer;
+    private JLabel pOneScore;
+    private JLabel pTwoScore;
     private BoardTheme theme;
     //private BoardPanel board;
 
@@ -50,8 +53,15 @@ public class GameFrame extends JFrame implements GameBoard {
         parent.add(player2EndPit, BorderLayout.WEST);
         
         currentPlayer = new JLabel(Integer.toString(model.getCurrentPlayer()));
-        JPanel infoPanel = new JPanel(new FlowLayout());
+        pOneScore = new JLabel("P1: " + Integer.toString(model.getPlayerOneScore()));
+        pTwoScore = new JLabel("P2: " + Integer.toString(model.getPlayerTwoScore()));
+        JPanel infoPanel = new JPanel();
+        infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.X_AXIS));
+        infoPanel.add(pTwoScore);
+        infoPanel.add(Box.createRigidArea(new Dimension(450, 0)));
         infoPanel.add(currentPlayer);
+        infoPanel.add(Box.createRigidArea(new Dimension(450, 0)));
+        infoPanel.add(pOneScore);
         parent.add(infoPanel, BorderLayout.NORTH);
         this.updateCurrentPlayer();
         
@@ -106,6 +116,12 @@ public class GameFrame extends JFrame implements GameBoard {
         this.currentPlayer.setText("Current Player: " + Integer.toString(model.getCurrentPlayer()));
     }
     
+    private void updateCurrentScores() {
+        this.pOneScore.setText("P1: " + Integer.toString(model.getPlayerOneScore()));
+        this.pTwoScore.setText("P2: " + Integer.toString(model.getPlayerTwoScore()));
+        
+    }
+    
 
     public void addPitView(int index, JPanel regularPitPanel, Color color) {
         PitView p = new PitView(model, model.getPit(index), theme);
@@ -128,6 +144,7 @@ public class GameFrame extends JFrame implements GameBoard {
             pitView.updateView();
         }
         this.updateCurrentPlayer();
+        this.updateCurrentScores();
         this.repaint();
     }
 

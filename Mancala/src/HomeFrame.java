@@ -30,6 +30,7 @@ public class HomeFrame extends JFrame
         JButton whiteTheme = new JButton("White Theme");
         JButton blackTheme = new JButton("Black Theme");
         JButton spongebobTheme = new JButton("Spongebob Theme");
+        JButton groovyTheme = new JButton("Groovy Theme");
         model = new Model(4, Color.WHITE);
         
         final JTextField numMarbles = new JTextField("4");
@@ -37,6 +38,7 @@ public class HomeFrame extends JFrame
         mainFrame.add(whiteTheme);
         mainFrame.add(blackTheme);
         mainFrame.add(spongebobTheme);
+        mainFrame.add(groovyTheme);
         mainFrame.add(numMarbles);
         setContentPane(mainFrame);
         setVisible(true);
@@ -98,6 +100,26 @@ public class HomeFrame extends JFrame
                     model = new Model(marbles, Color.BLACK);
                     setVisible(false);
                     GameFrame gf = new GameFrame(model, new SpongeBobTheme());
+                    gf.setVisible(true);
+                }
+            }
+        });
+        
+        groovyTheme.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                                int marbles = Integer.parseInt(numMarbles.getText());
+                if (marbles > 4 || marbles < 1)
+                {
+                    JOptionPane.showMessageDialog(mainFrame, "Enter a number between 1 and 4");
+                }
+                else
+                {
+                    ///GameFrame game = new GameFrame(new Model(marbles), Color.BLACK);
+                    model = new Model(marbles, Color.BLACK);
+                    setVisible(false);
+                    GameFrame gf = new GameFrame(model, new GroovyTheme());
                     gf.setVisible(true);
                 }
             }

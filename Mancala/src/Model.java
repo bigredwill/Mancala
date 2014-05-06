@@ -203,22 +203,7 @@ public class Model
             }
         }
 
-//        //Gets the current player to check for an empty side.
-//        int player;
-//        if (this.currentPlayer == PLAYER_ONE) {
-//            player = PLAYER_ONE;
-//        } else {
-//            player = PLAYER_TWO;
-//        }
 
-//        //Start with empty side, if not empty
-//        boolean emptySide = true;
-//        for (int i = player; i < player + 6; i++) {
-//            if (board[i].getMarbles() > 0) {
-//                emptySide = false;
-//                break;
-//            }
-//        }
         //iterate over the changelisteners
         if(lastPitVisted.getPlayer() == currentPlayer)
             this.capture(lastPitVisted);
@@ -383,7 +368,17 @@ public class Model
     {
         this.currentPlayer = currentPlayer;
     }
-
+    
+    public int getPlayerOneScore()
+    {
+        return board[PLAYER_ONE_MANCALA].getMarbles();
+    }
+    
+    public int getPlayerTwoScore()
+    {
+        return board[PLAYER_TWO_MANCALA].getMarbles();
+    }
+    
     public boolean checkEndGame()
     {
 

@@ -11,7 +11,7 @@ public class SpongeBobTheme implements BoardTheme {
 
     @Override
     public String getMarbleFile() {
-        String mb = "/Images/marb1.png";
+        String mb = "/Images/marb4.png";
         return mb;
     }
 
