@@ -9,8 +9,7 @@ import javax.swing.event.ChangeListener;
  *
  * @author #ODOT
  */
-public class Model
-{
+public class Model {
 
     private Pit[] board;
     private Pit[] previousBoard = null;
@@ -25,44 +24,33 @@ public class Model
     public static Color color;
     private int undoCounter = 0;
 
-<<<<<<< HEAD
-    public Model(int numMarbles, Color aColor)
-    {
-=======
     public Model(int numMarbles, Color color) {
->>>>>>> 9d3bf62d1c0304b87b5d5ca5566d5b4b635f2663
         board = new Pit[14];
         createBoard(numMarbles);
         this.color = color;
     }
 
-    public Pit[] getBoard()
-    {
+    public Pit[] getBoard() {
         return this.board;
     }
 
-    private void createBoard(int numMarbles)
-    {
+    private void createBoard(int numMarbles) {
         //player 1 initalization 
         this.board[PLAYER_ONE_MANCALA] = new Pit(0, PLAYER_ONE, true);
-        for (int i = PLAYER_ONE_MANCALA + 1; i < PLAYER_TWO_MANCALA; i++)
-        {
+        for (int i = PLAYER_ONE_MANCALA + 1; i < PLAYER_TWO_MANCALA; i++) {
             this.board[i] = new Pit(numMarbles, PLAYER_ONE, false);
         }
 
         this.board[PLAYER_TWO_MANCALA] = new Pit(0, PLAYER_TWO, true);
-        for (int i = PLAYER_TWO_MANCALA + 1; i < board.length; i++)
-        {
+        for (int i = PLAYER_TWO_MANCALA + 1; i < board.length; i++) {
             this.board[i] = new Pit(numMarbles, PLAYER_TWO, false);
         }
 
         this.currentPlayer = PLAYER_ONE;
     }
 
-    public void printBoard()
-    {
-        for (Pit p : board)
-        {
+    public void printBoard() {
+        for (Pit p : board) {
             System.out.println(p.getPlayer() + " : " + p.getMarbles());
         }
 
@@ -74,11 +62,9 @@ public class Model
      * @param pit the pit
      * @return returns true if the turn was successfully executed, else false.
      */
-    public boolean executeTurn(Pit pit)
-    {
+    public boolean executeTurn(Pit pit) {
         //validate if the pit is valid. if it fails return false
-        if (isValidPit(pit) == false)
-        {
+        if (isValidPit(pit) == false) {
             //invalid pit
             return false;
         }
@@ -87,59 +73,31 @@ public class Model
         return true;
     }
 
-    public void addListener(ChangeListener listener)
-    {
+    public void addListener(ChangeListener listener) {
         this.listeners.add(listener);
     }
 
-    public void removeListener(ChangeListener listener)
-    {
+    public void removeListener(ChangeListener listener) {
         this.listeners.remove(listener);
     }
 
-    private boolean isValidPit(Pit pit)
-    {
-        if (pit.isIsEnd() == true)
-        {
+    private boolean isValidPit(Pit pit) {
+        if (pit.isIsEnd() == true) {
             //end pit, cant click on it
             return false;
         }
-<<<<<<< HEAD
-
-        //check player
-        if (pit.getPlayer() != this.currentPlayer)
-        {
-=======
         
         if (pit.getPlayer() != this.currentPlayer) {
->>>>>>> 9d3bf62d1c0304b87b5d5ca5566d5b4b635f2663
             //valid pit
             System.out.println("That isn't your pit.");
             return false;
-        } else
-        {
+        } else {
             return true;
         }
     }
 
-<<<<<<< HEAD
-    private boolean distributeMarbs(Pit pit)
-    {
-        if (pit.getMarbles() == 0)
-        {
-            return false;
-        }
-        return true;
-    }
-
-    private boolean distributeMarbles(Pit pit)
-    {
-        if (pit.getMarbles() == 0)
-        {
-=======
     private boolean distributeMarbles(Pit pit) {
         if (pit.getMarbles() == 0) {
->>>>>>> 9d3bf62d1c0304b87b5d5ca5566d5b4b635f2663
             //no marbles
             System.out.println("There are no marbles in this pit.");
             return false;
@@ -152,16 +110,13 @@ public class Model
         pit.setMarbles(0);
 
         Pit lastPitVisted = null;
-        for (int i = 1; i <= numberOfIterations; i++)
-        {
+        for (int i = 1; i <= numberOfIterations; i++) {
             //the current pit adjusted
             //int currentPitIndex = this.getPitIndex(pitIndex, i);
             int currentPitIndex;
-            if (lastPitVisted == null)
-            {
+            if (lastPitVisted == null) {
                 currentPitIndex = this.getPitIndex(pitIndex, 1);
-            } else
-            {
+            } else {
                 //get the index of the last visited pit
                 int lastPitIndex = this.getPitIndex(lastPitVisted);
                 currentPitIndex = this.getPitIndex(lastPitIndex, 1);
@@ -171,21 +126,16 @@ public class Model
             lastPitVisted = currentPit;
 
             //check if it is end pit
-            if (currentPit.isIsEnd() == true)
-            {
+            if (currentPit.isIsEnd() == true) {
                 //if end pit is current users end pit increment that one
-                if (currentPit.getPlayer() == this.currentPlayer)
-                {
+                if (currentPit.getPlayer() == this.currentPlayer) {
                     //increment that one
                     currentPit.setMarbles(currentPit.getMarbles() + 1);
-                } else
-                {
+                } else {
                     //not the current player's end pit
-                    if (currentPitIndex != 0)
-                    {
+                    if (currentPitIndex != 0) {
                         currentPitIndex--;
-                    } else
-                    {
+                    } else {
                         currentPitIndex = board.length - 1;
                     }
                     System.out.println("currentpitindex " + currentPitIndex);
@@ -193,8 +143,7 @@ public class Model
                     currentPit = lastPitVisted;
                     currentPit.setMarbles(currentPit.getMarbles() + 1);
                 }
-            } else
-            {
+            } else {
                 //not an end pit just add one
                 currentPit.setMarbles(currentPit.getMarbles() + 1);
             }
@@ -202,38 +151,31 @@ public class Model
 
 
         //iterate over the changelisteners
-        if (lastPitVisted.getPlayer() == currentPlayer)
-        {
+        if (lastPitVisted.getPlayer() == currentPlayer) {
             this.capture(lastPitVisted);
         }
 
 
-        if (lastPitVisted.isIsEnd() == true)
-        {
+        if (lastPitVisted.isIsEnd() == true) {
             System.out.println("free turn!");
             //current player stays the same
-        } else
-        {
+        } else {
             int lastPlayer = currentPlayer;
 
-            if (currentPlayer == PLAYER_ONE)
-            {
+            if (currentPlayer == PLAYER_ONE) {
                 currentPlayer = PLAYER_TWO;
 
-            } else
-            {
+            } else {
                 currentPlayer = PLAYER_ONE;
             }
-            if (lastPlayer != currentPlayer && undoCounter >= 3)
-            {
+            if (lastPlayer != currentPlayer && undoCounter >= 3) {
                 undoCounter = 0;
             }
         }
 
         System.out.println("Next turn by: " + currentPlayer);
 
-        if (checkEndGame())
-        {
+        if (checkEndGame()) {
             this.moveRemainingMarbles();
         }
 
@@ -243,22 +185,18 @@ public class Model
 
     }
 
-    public boolean canUndo()
-    {
-        if (previousBoard != null && undoCounter < 3)
-        {
+    public boolean canUndo() {
+        if (previousBoard != null && undoCounter < 3) {
             return true;
         }
         return false;
     }
 
-    private void setUndo()
-    {
+    private void setUndo() {
         Pit[] temp = new Pit[this.board.length];
 
 
-        for (int i = 0; i < board.length; i++)
-        {
+        for (int i = 0; i < board.length; i++) {
             Pit p = new Pit(board[i]);
             temp[i] = p;
         }
@@ -266,36 +204,28 @@ public class Model
         this.previousPlayer = this.currentPlayer;
     }
 
-    private void dispatch(ChangeEvent event)
-    {
-        for (ChangeListener listener : this.listeners)
-        {
+    private void dispatch(ChangeEvent event) {
+        for (ChangeListener listener : this.listeners) {
             listener.stateChanged(event);
         }
     }
 
-    private void capture(Pit lastPitVisited)
-    {
-        if (lastPitVisited == null)
-        {
+    private void capture(Pit lastPitVisited) {
+        if (lastPitVisited == null) {
             return;
         }
 
-        if (lastPitVisited.getMarbles() == 1 && !lastPitVisited.isIsEnd())
-        {
+        if (lastPitVisited.getMarbles() == 1 && !lastPitVisited.isIsEnd()) {
             //capture
             int index = this.getPitIndex(lastPitVisited);
             int captureIndex = Math.abs(index - board.length);
             Pit capturePit = this.getPit(captureIndex);
 
-            if (capturePit.getMarbles() != 0)
-            {
-                if (this.currentPlayer == PLAYER_ONE)
-                {
+            if (capturePit.getMarbles() != 0) {
+                if (this.currentPlayer == PLAYER_ONE) {
                     Pit player1Mancalla = board[PLAYER_ONE_MANCALA];
                     player1Mancalla.setMarbles(player1Mancalla.getMarbles() + capturePit.getMarbles() + 1);
-                } else if (this.currentPlayer == PLAYER_TWO)
-                {
+                } else if (this.currentPlayer == PLAYER_TWO) {
                     Pit player2Mancalla = board[PLAYER_TWO_MANCALA];
                     player2Mancalla.setMarbles(player2Mancalla.getMarbles() + capturePit.getMarbles() + 1);
                 }
@@ -310,15 +240,12 @@ public class Model
         }
     }
 
-    private int getPitIndex(Pit pit)
-    {
+    private int getPitIndex(Pit pit) {
 
         //figure out which index pit you passed
         int pitIndex = 0;
-        for (Pit indexPit : board)
-        {
-            if (indexPit == pit)
-            {
+        for (Pit indexPit : board) {
+            if (indexPit == pit) {
                 return pitIndex;
             }
             pitIndex++;
@@ -326,11 +253,9 @@ public class Model
         return -1;
     }
 
-    private int getPitIndex(int pitIndex, int i)
-    {
+    private int getPitIndex(int pitIndex, int i) {
         int endingIndex = pitIndex - i;
-        if (endingIndex < 0)
-        {
+        if (endingIndex < 0) {
             //adjust it
             endingIndex = endingIndex + board.length;
 
@@ -340,82 +265,55 @@ public class Model
     }
 
     @Override
-<<<<<<< HEAD
-    public String toString()
-    {
-        StringBuffer buffer = new StringBuffer();
-        int counter = 0;
-        for (Pit pit : board)
-        {
-            buffer.append(pit.toString()).append("    " + counter).append("\n");
-=======
     public String toString() {
         StringBuilder buffer = new StringBuilder();
         int counter = 0;
         for (Pit pit : board) {
             buffer.append(pit.toString()).append("    ").append(counter).append("\n");
->>>>>>> 9d3bf62d1c0304b87b5d5ca5566d5b4b635f2663
             counter++;
         }
         return buffer.toString();
     }
 
-    public Pit getPit(int index)
-    {
-        if (index < board.length && index >= 0)
-        {
+    public Pit getPit(int index) {
+        if (index < board.length && index >= 0) {
             return board[index];
         }
         return null;
     }
 
-    public int getCurrentPlayer()
-    {
+    public int getCurrentPlayer() {
         return currentPlayer;
     }
 
-    public void setCurrentPlayer(int currentPlayer)
-    {
+    public void setCurrentPlayer(int currentPlayer) {
         this.currentPlayer = currentPlayer;
     }
 
-    public int getPlayerOneScore()
-    {
+    public int getPlayerOneScore() {
         return board[PLAYER_ONE_MANCALA].getMarbles();
     }
 
-    public int getPlayerTwoScore()
-    {
+    public int getPlayerTwoScore() {
         return board[PLAYER_TWO_MANCALA].getMarbles();
     }
 
-<<<<<<< HEAD
-    public boolean checkEndGame()
-    {
-
-=======
     public boolean checkEndGame() {
->>>>>>> 9d3bf62d1c0304b87b5d5ca5566d5b4b635f2663
         boolean isGameOver;
         int player1MarbleCount = this.player1MarbleCount();
         int player2MarbleCount = this.player2MarbleCount();
-        if (player1MarbleCount == 0 || player2MarbleCount == 0)
-        {
+        if (player1MarbleCount == 0 || player2MarbleCount == 0) {
             isGameOver = true;
             return isGameOver;
-        } else
-        {
+        } else {
             isGameOver = false;
             return isGameOver;
         }
     }
 
-    void undo()
-    {
-        if (canUndo())
-        {
-            for (int i = 0; i < board.length; i++)
-            {
+    void undo() {
+        if (canUndo()) {
+            for (int i = 0; i < board.length; i++) {
                 board[i].copyPit(previousBoard[i]);
             }
             previousBoard = null;
@@ -428,43 +326,35 @@ public class Model
         }
     }
 
-    public Color getColor()
-    {
+    public Color getColor() {
         return this.color;
     }
 
-    private int player1MarbleCount()
-    {
+    private int player1MarbleCount() {
         int counter = 0;
-        for (int i = PLAYER_ONE_MANCALA + 1; i < PLAYER_TWO_MANCALA; i++)
-        {
+        for (int i = PLAYER_ONE_MANCALA + 1; i < PLAYER_TWO_MANCALA; i++) {
             counter += board[i].getMarbles();
         }
         return counter;
     }
 
-    private int player2MarbleCount()
-    {
+    private int player2MarbleCount() {
         int counter = 0;
-        for (int i = PLAYER_TWO_MANCALA + 1; i < board.length; i++)
-        {
+        for (int i = PLAYER_TWO_MANCALA + 1; i < board.length; i++) {
             counter += board[i].getMarbles();
         }
         return counter;
     }
 
-    private void moveRemainingMarbles()
-    {
+    private void moveRemainingMarbles() {
         int player1Marbles = this.player1MarbleCount();
         int player2Marbles = this.player2MarbleCount();
 
         board[PLAYER_ONE_MANCALA].setMarbles(board[PLAYER_ONE_MANCALA].getMarbles() + player1Marbles);
         board[PLAYER_TWO_MANCALA].setMarbles(board[PLAYER_TWO_MANCALA].getMarbles() + player2Marbles);
 
-        for (Pit pit : board)
-        {
-            if (pit.isIsEnd() == false)
-            {
+        for (Pit pit : board) {
+            if (pit.isIsEnd() == false) {
                 pit.setMarbles(0);
             }
         }
