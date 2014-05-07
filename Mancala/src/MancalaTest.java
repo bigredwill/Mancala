@@ -2,7 +2,7 @@
 
 /**
  * CS151 Group Project. TEAM ODOT.
- * The main class for the Mancala Game.
+ * The main class for the MancalaTest Game.
  *
  * @author #ODOT
  */
