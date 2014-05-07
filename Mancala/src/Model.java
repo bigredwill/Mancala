@@ -24,12 +24,10 @@ public class Model {
     public static Color color;
     private int undoCounter = 0;
 
-    public Model(int numMarbles, Color aColor) {
+    public Model(int numMarbles, Color color) {
         board = new Pit[14];
         createBoard(numMarbles);
-        color = aColor;
-        //();
-
+        this.color = color;
     }
 
     public Pit[] getBoard() {
@@ -88,8 +86,7 @@ public class Model {
             //end pit, cant click on it
             return false;
         }
-
-        //check player
+        
         if (pit.getPlayer() != this.currentPlayer) {
             //valid pit
             System.out.println("That isn't your pit.");
@@ -97,13 +94,6 @@ public class Model {
         } else {
             return true;
         }
-    }
-
-    private boolean distributeMarbs(Pit pit) {
-        if (pit.getMarbles() == 0) {
-            return false;
-        }
-        return true;
     }
 
     private boolean distributeMarbles(Pit pit) {
@@ -183,9 +173,6 @@ public class Model {
             }
         }
 
-
-
-
         System.out.println("Next turn by: " + currentPlayer);
 
         if (checkEndGame()) {
@@ -194,8 +181,6 @@ public class Model {
 
         ChangeEvent event = new ChangeEvent(this);
         dispatch(event);
-
-
         return true;
 
     }
@@ -281,10 +266,10 @@ public class Model {
 
     @Override
     public String toString() {
-        StringBuffer buffer = new StringBuffer();
+        StringBuilder buffer = new StringBuilder();
         int counter = 0;
         for (Pit pit : board) {
-            buffer.append(pit.toString()).append("    " + counter).append("\n");
+            buffer.append(pit.toString()).append("    ").append(counter).append("\n");
             counter++;
         }
         return buffer.toString();
@@ -314,9 +299,7 @@ public class Model {
     }
 
     public boolean checkEndGame() {
-
         boolean isGameOver;
-
         int player1MarbleCount = this.player1MarbleCount();
         int player2MarbleCount = this.player2MarbleCount();
         if (player1MarbleCount == 0 || player2MarbleCount == 0) {

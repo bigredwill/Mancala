@@ -1,9 +1,7 @@
-
-
 /**
  * An individual pit.
  *
- * @author Avi, Will, Michael
+ * @author #ODOT
  */
 public class Pit {
 
