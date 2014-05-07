@@ -170,6 +170,8 @@ public class Model {
             }
             if (lastPlayer != currentPlayer && undoCounter >= 3) {
                 undoCounter = 0;
+                previousBoard = null;
+                System.out.println("UNDO COUNTER RESET");
             }
         }
 
@@ -230,10 +232,8 @@ public class Model {
                     player2Mancalla.setMarbles(player2Mancalla.getMarbles() + capturePit.getMarbles() + 1);
                 }
 
-
                 capturePit.setMarbles(0);
                 lastPitVisited.setMarbles(0);
-
 
                 System.out.println("CAPTURE");
             }
