@@ -34,8 +34,6 @@ public class GameFrame extends JFrame implements GameBoard {
         //make end pits
         PitView player1EndPit = new PitView(model, model.getPit(Model.PLAYER_ONE_MANCALA), this.theme);
         PitView player2EndPit = new PitView(model, model.getPit(Model.PLAYER_TWO_MANCALA), this.theme);
-        player1EndPit.setBackground(model.getColor());
-        player2EndPit.setBackground(model.getColor());
 
         pitViews.add(player1EndPit);
         pitViews.add(player2EndPit);
@@ -71,21 +69,21 @@ public class GameFrame extends JFrame implements GameBoard {
         parent.add(undoPanel, BorderLayout.SOUTH);
 
         JPanel regularPitPanel = new JPanel();
-        regularPitPanel.setBackground(model.getColor());
+        //regularPitPanel.setBackground(model.getColor());
 
-        this.addPitView(8, regularPitPanel, model.getColor());
-        this.addPitView(9, regularPitPanel, model.getColor());
-        this.addPitView(10, regularPitPanel, model.getColor());
-        this.addPitView(11, regularPitPanel, model.getColor());
-        this.addPitView(12, regularPitPanel, model.getColor());
-        this.addPitView(13, regularPitPanel, model.getColor());
+        this.addPitView(8, regularPitPanel);
+        this.addPitView(9, regularPitPanel);
+        this.addPitView(10, regularPitPanel);
+        this.addPitView(11, regularPitPanel);
+        this.addPitView(12, regularPitPanel);
+        this.addPitView(13, regularPitPanel);
 
-        this.addPitView(6, regularPitPanel, model.getColor());
-        this.addPitView(5, regularPitPanel, model.getColor());
-        this.addPitView(4, regularPitPanel, model.getColor());
-        this.addPitView(3, regularPitPanel, model.getColor());
-        this.addPitView(2, regularPitPanel, model.getColor());
-        this.addPitView(1, regularPitPanel, model.getColor());
+        this.addPitView(6, regularPitPanel);
+        this.addPitView(5, regularPitPanel);
+        this.addPitView(4, regularPitPanel);
+        this.addPitView(3, regularPitPanel);
+        this.addPitView(2, regularPitPanel);
+        this.addPitView(1, regularPitPanel);
 
         SpringUtilities.makeGrid(regularPitPanel, 2, 6, 0, 0, 5, 5);
         parent.add(regularPitPanel, BorderLayout.CENTER);
@@ -107,9 +105,8 @@ public class GameFrame extends JFrame implements GameBoard {
     }
 
     @Override
-    public void addPitView(int index, JPanel regularPitPanel, Color color) {
+    public void addPitView(int index, JPanel regularPitPanel) {
         PitView p = new PitView(model, model.getPit(index), theme);
-        p.setBackground(color);
         this.pitViews.add(p);
         regularPitPanel.add(p);
     }

@@ -10,7 +10,6 @@ import javax.swing.event.ChangeListener;
  * @author #ODOT
  */
 public class Model {
-
     private Pit[] board;
     private Pit[] previousBoard = null;
     private ArrayList<ChangeListener> listeners = new ArrayList<>();
@@ -21,13 +20,11 @@ public class Model {
     public static final int PLAYER_ONE_MANCALA = 0;
     public static final int PLAYER_TWO_MANCALA = 7;
     public static final int NUM_REGULAR_PITS = 6;
-    public static Color color;
     private int undoCounter = 0;
 
-    public Model(int numMarbles, Color color) {
+    public Model(int numMarbles) {
         board = new Pit[14];
         createBoard(numMarbles);
-        this.color = color;
     }
 
     public Pit[] getBoard() {
@@ -324,10 +321,6 @@ public class Model {
             System.out.println("undo method called");
             this.undoCounter++;
         }
-    }
-
-    public Color getColor() {
-        return this.color;
     }
 
     private int player1MarbleCount() {

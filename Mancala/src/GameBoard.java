@@ -11,5 +11,5 @@ import javax.swing.event.ChangeListener;
 public interface GameBoard extends ChangeListener
 {
     public void stateChanged(ChangeEvent e);
-    void addPitView(int index, JPanel regularPitPanel, Color color);
+    void addPitView(int index, JPanel regularPitPanel);
 }

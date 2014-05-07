@@ -20,12 +20,12 @@ public class WhiteTheme implements BoardTheme {
 
     @Override
     public String getEndPitFile() {
-        return "/Images/endPit1.png";
+        return "/Images/endPit2.png";
     }
 
     @Override
     public String getPitFile() {
-        return "/Images/pit1.png";
+        return "/Images/pit2.png";
     }
     
     
