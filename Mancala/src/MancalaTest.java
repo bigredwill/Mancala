@@ -6,9 +6,12 @@
  *
  * @author #ODOT
  */
-public class Mancala
+public class MancalaTest
 {
-
+    /**
+     * One method to rule them all..
+     * @param args Command Line arguments.
+     */
     public static void main(String args[])
     {
         HomeFrame home = new HomeFrame();
