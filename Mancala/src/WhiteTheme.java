@@ -8,7 +8,10 @@
  * @author Avi
  */
 public class WhiteTheme implements BoardTheme {
-
+    /**
+     * Loads the Marble
+     * @return the path to the marble
+     */
     @Override
     public String getMarbleFile() {
         String mb = "/Images/marb1.png";

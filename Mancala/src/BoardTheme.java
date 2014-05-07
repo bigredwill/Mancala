@@ -5,7 +5,7 @@
 
 /**
  *
- * @author Avi
+ * @author #ODOT
  */
 public interface BoardTheme {
     public String getMarbleFile();

@@ -8,11 +8,13 @@
  * @author Avi
  */
 public class SpongeBobTheme implements BoardTheme {
-
+    /**
+     * Loads the Marble
+     * @return the path to the marble
+     */
     @Override
     public String getMarbleFile() {
-        String mb = "/Images/marb1.png";
-        return mb;
+        return "/Images/marb4.png";
     }
 
     @Override

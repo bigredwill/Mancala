@@ -1,6 +1,4 @@
 
-import java.awt.Shape;
-import java.awt.geom.Ellipse2D;
 
 /**
  * An individual pit.
