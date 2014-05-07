@@ -5,9 +5,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
- * Will, 4/29, 2:30pm. So we can substitute any image in, it works. This is how
- * we will do different themes.
- *
  * @author ODOT
  */
 public class PitView extends JPanel {
@@ -38,15 +35,10 @@ public class PitView extends JPanel {
         this.pit = pit;
         imageLabel = new JLabel();
         this.add(imageLabel);
-        //this.setBackground(Color.red);
         this.theme = theme;
         if (this.pit.isIsEnd()) {
-//            backg = "Images/pitEnd.png";
-
             icon = new PitIcon(pit.getMarbles(), true, theme);
         } else {
-//            backg = "Images/pit0.png";
-
             icon = new PitIcon(pit.getMarbles(), false, theme);
         }
 

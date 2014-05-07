@@ -25,13 +25,15 @@ public class Model
     public static Color color;
     private int undoCounter = 0;
 
+<<<<<<< HEAD
     public Model(int numMarbles, Color aColor)
     {
+=======
+    public Model(int numMarbles, Color color) {
+>>>>>>> 9d3bf62d1c0304b87b5d5ca5566d5b4b635f2663
         board = new Pit[14];
         createBoard(numMarbles);
-        color = aColor;
-        //();
-
+        this.color = color;
     }
 
     public Pit[] getBoard()
@@ -102,10 +104,15 @@ public class Model
             //end pit, cant click on it
             return false;
         }
+<<<<<<< HEAD
 
         //check player
         if (pit.getPlayer() != this.currentPlayer)
         {
+=======
+        
+        if (pit.getPlayer() != this.currentPlayer) {
+>>>>>>> 9d3bf62d1c0304b87b5d5ca5566d5b4b635f2663
             //valid pit
             System.out.println("That isn't your pit.");
             return false;
@@ -115,6 +122,7 @@ public class Model
         }
     }
 
+<<<<<<< HEAD
     private boolean distributeMarbs(Pit pit)
     {
         if (pit.getMarbles() == 0)
@@ -128,6 +136,10 @@ public class Model
     {
         if (pit.getMarbles() == 0)
         {
+=======
+    private boolean distributeMarbles(Pit pit) {
+        if (pit.getMarbles() == 0) {
+>>>>>>> 9d3bf62d1c0304b87b5d5ca5566d5b4b635f2663
             //no marbles
             System.out.println("There are no marbles in this pit.");
             return false;
@@ -218,9 +230,6 @@ public class Model
             }
         }
 
-
-
-
         System.out.println("Next turn by: " + currentPlayer);
 
         if (checkEndGame())
@@ -230,8 +239,6 @@ public class Model
 
         ChangeEvent event = new ChangeEvent(this);
         dispatch(event);
-
-
         return true;
 
     }
@@ -333,6 +340,7 @@ public class Model
     }
 
     @Override
+<<<<<<< HEAD
     public String toString()
     {
         StringBuffer buffer = new StringBuffer();
@@ -340,6 +348,13 @@ public class Model
         for (Pit pit : board)
         {
             buffer.append(pit.toString()).append("    " + counter).append("\n");
+=======
+    public String toString() {
+        StringBuilder buffer = new StringBuilder();
+        int counter = 0;
+        for (Pit pit : board) {
+            buffer.append(pit.toString()).append("    ").append(counter).append("\n");
+>>>>>>> 9d3bf62d1c0304b87b5d5ca5566d5b4b635f2663
             counter++;
         }
         return buffer.toString();
@@ -374,11 +389,14 @@ public class Model
         return board[PLAYER_TWO_MANCALA].getMarbles();
     }
 
+<<<<<<< HEAD
     public boolean checkEndGame()
     {
 
+=======
+    public boolean checkEndGame() {
+>>>>>>> 9d3bf62d1c0304b87b5d5ca5566d5b4b635f2663
         boolean isGameOver;
-
         int player1MarbleCount = this.player1MarbleCount();
         int player2MarbleCount = this.player2MarbleCount();
         if (player1MarbleCount == 0 || player2MarbleCount == 0)

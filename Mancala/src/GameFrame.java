@@ -27,13 +27,9 @@ public class GameFrame extends JFrame implements GameBoard {
         this.setBackground(Color.RED);
         this.theme = theme;
         this.model = aModel;
-        //board = new BoardPanel(model);
-
         model.addListener(this);
-//        Container parent = this.getContentPane();
         JPanel parent = new JPanel();
         parent.setLayout(new BorderLayout());
-
 
         //make end pits
         PitView player1EndPit = new PitView(model, model.getPit(Model.PLAYER_ONE_MANCALA), this.theme);
@@ -41,10 +37,8 @@ public class GameFrame extends JFrame implements GameBoard {
         player1EndPit.setBackground(model.getColor());
         player2EndPit.setBackground(model.getColor());
 
-
         pitViews.add(player1EndPit);
         pitViews.add(player2EndPit);
-
         parent.add(player1EndPit, BorderLayout.EAST);
         parent.add(player2EndPit, BorderLayout.WEST);
 
@@ -93,14 +87,9 @@ public class GameFrame extends JFrame implements GameBoard {
         this.addPitView(2, regularPitPanel, model.getColor());
         this.addPitView(1, regularPitPanel, model.getColor());
 
-
         SpringUtilities.makeGrid(regularPitPanel, 2, 6, 0, 0, 5, 5);
         parent.add(regularPitPanel, BorderLayout.CENTER);
-
-
         add(parent);
-        //setContentPane(board);
-
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1100, 320);
         this.setResizable(false);
@@ -115,9 +104,9 @@ public class GameFrame extends JFrame implements GameBoard {
     private void updateCurrentScores() {
         this.pOneScore.setText("P1: " + Integer.toString(model.getPlayerOneScore()));
         this.pTwoScore.setText("P2: " + Integer.toString(model.getPlayerTwoScore()));
-
     }
 
+    @Override
     public void addPitView(int index, JPanel regularPitPanel, Color color) {
         PitView p = new PitView(model, model.getPit(index), theme);
         p.setBackground(color);
@@ -147,17 +136,9 @@ public class GameFrame extends JFrame implements GameBoard {
 
         if (model.checkEndGame()) {
             //game over
-
-
             this.displayerWinningPlayer();
-
-
             System.exit(-1);
         }
-    }
-
-    boolean styleSelected() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     private void displayerWinningPlayer() {
