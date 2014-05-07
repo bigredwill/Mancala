@@ -12,7 +12,8 @@ public class Mancala
     public static void main(String args[])
     {
         HomeFrame home = new HomeFrame();
-        home.pack();
+        home.setSize(1100, 340);
+        home.setResizable(false);
         home.setVisible(true);
     }
 }

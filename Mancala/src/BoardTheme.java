@@ -4,7 +4,7 @@
  */
 
 /**
- *
+ * An interface to help get BoardThemes
  * @author #ODOT
  */
 public interface BoardTheme {
