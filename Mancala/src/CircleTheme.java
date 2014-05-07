@@ -1,15 +1,13 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
- * @author Avi
+ * @author #ODOT
  */
-public class WhiteTheme implements BoardTheme {
+public class CircleTheme implements BoardTheme {
+
     /**
      * Loads the Marble
+     *
      * @return the path to the marble
      */
     @Override
@@ -18,15 +16,22 @@ public class WhiteTheme implements BoardTheme {
         return mb;
     }
 
+    /**
+     * Loads the end pit
+     *
+     * @return the path to the end pit
+     */
     @Override
     public String getEndPitFile() {
         return "/Images/endPit2.png";
     }
 
+    /**
+     * Loads the regular pits
+     * @return the path to the regular pit
+     */
     @Override
     public String getPitFile() {
         return "/Images/pit2.png";
     }
-    
-    
 }

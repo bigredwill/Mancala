@@ -21,8 +21,12 @@ public class GameFrame extends JFrame implements GameBoard {
     private JLabel pOneScore;
     private JLabel pTwoScore;
     private BoardTheme theme;
-    //private BoardPanel board;
 
+    /**
+     * The constructor that loads the model and the theme
+     * @param aModel
+     * @param theme 
+     */
     public GameFrame(Model aModel, BoardTheme theme) {
         this.setBackground(Color.RED);
         this.theme = theme;
@@ -69,8 +73,8 @@ public class GameFrame extends JFrame implements GameBoard {
         parent.add(undoPanel, BorderLayout.SOUTH);
 
         JPanel regularPitPanel = new JPanel();
-        //regularPitPanel.setBackground(model.getColor());
 
+        //adds all of the pitviews 
         this.addPitView(8, regularPitPanel);
         this.addPitView(9, regularPitPanel);
         this.addPitView(10, regularPitPanel);
@@ -95,15 +99,26 @@ public class GameFrame extends JFrame implements GameBoard {
         setVisible(true);
     }
 
+    /**
+     * Updates who the current player is
+     */
     private void updateCurrentPlayer() {
         this.currentPlayer.setText("Current Player: " + Integer.toString(model.getCurrentPlayer()));
     }
 
+    /**
+     * Updates the current scores
+     */
     private void updateCurrentScores() {
         this.pOneScore.setText("P1: " + Integer.toString(model.getPlayerOneScore()));
         this.pTwoScore.setText("P2: " + Integer.toString(model.getPlayerTwoScore()));
     }
 
+    /**
+     * Adds a pitview to a japenl
+     * @param index the index of the pit to be added
+     * @param regularPitPanel the panel that houses the pit
+     */
     @Override
     public void addPitView(int index, JPanel regularPitPanel) {
         PitView p = new PitView(model, model.getPit(index), theme);
@@ -111,6 +126,10 @@ public class GameFrame extends JFrame implements GameBoard {
         regularPitPanel.add(p);
     }
 
+    /**
+     * Carries out all necessary actions when an event happens. 
+     * @param e the change event 
+     */
     @Override
     public void stateChanged(ChangeEvent e) {
         this.model = (Model) e.getSource();
@@ -138,6 +157,9 @@ public class GameFrame extends JFrame implements GameBoard {
         }
     }
 
+    /**
+     * Shows the game is over and who won the game
+     */
     private void displayerWinningPlayer() {
         Pit[] board = model.getBoard();
 

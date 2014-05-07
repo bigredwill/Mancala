@@ -1,10 +1,6 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
- * An interface to help get BoardThemes
+ * An interface to help get BoardThemes. This follows the strategy pattern
  * @author #ODOT
  */
 public interface BoardTheme {

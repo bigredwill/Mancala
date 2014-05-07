@@ -12,12 +12,16 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author michaeldaniels
+ * @author #ODOT
  */
 public class HomeFrame extends JFrame {
 
     private Model model;
 
+    /**
+     * The constructor that houses all of the buttons and images for the main
+     * home screen
+     */
     public HomeFrame() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ImagePanel imagePanel = null;
@@ -30,16 +34,14 @@ public class HomeFrame extends JFrame {
         }
         final JPanel mainFrame = imagePanel;
         
-        JButton whiteTheme = new JButton("Circle Theme");
-        JButton blackTheme = new JButton("Square Theme");
+        JButton circleTheme = new JButton("Circle Theme");
+        JButton squareTheme = new JButton("Square Theme");
         JButton spongebobTheme = new JButton("Spongebob Theme");
         JButton groovyTheme = new JButton("Groovy Theme");
 
-        //model = new Model(4, Color.WHITE);
-
         final JTextField numMarbles = new JTextField("4");
-        mainFrame.add(whiteTheme);
-        mainFrame.add(blackTheme);
+        mainFrame.add(circleTheme);
+        mainFrame.add(squareTheme);
         mainFrame.add(spongebobTheme);
         mainFrame.add(groovyTheme);
         mainFrame.add(numMarbles);
@@ -48,7 +50,7 @@ public class HomeFrame extends JFrame {
         setVisible(true);
         pack();
 
-        whiteTheme.addActionListener(new ActionListener() {
+        circleTheme.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int marbles = Integer.parseInt(numMarbles.getText());
                 if (marbles > 4 || marbles < 1) {
@@ -58,13 +60,13 @@ public class HomeFrame extends JFrame {
                     model = new Model(marbles);
 
                     setVisible(false);
-                    GameFrame gf = new GameFrame(model, new WhiteTheme());
+                    GameFrame gf = new GameFrame(model, new CircleTheme());
                     gf.setVisible(true);
                 }
             }
         });
 
-        blackTheme.addActionListener(new ActionListener() {
+        squareTheme.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 int marbles = Integer.parseInt(numMarbles.getText());
                 if (marbles > 4 || marbles < 1) {
@@ -73,7 +75,7 @@ public class HomeFrame extends JFrame {
                     ///GameFrame game = new GameFrame(new Model(marbles), Color.BLACK);
                     model = new Model(marbles);
                     setVisible(false);
-                    GameFrame gf = new GameFrame(model, new BlackTheme());
+                    GameFrame gf = new GameFrame(model, new SquareTheme());
                     gf.setVisible(true);
                 }
             }

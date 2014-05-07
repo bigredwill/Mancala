@@ -1,7 +1,12 @@
 
 
 /**
- * CS151 Group Project. TEAM ODOT.
+ * CS151 Group Project. TEAM #ODOT.
+ * 
+ * Avi Dey
+ * Will Ritter Simons
+ * Michael Daniels
+ * 
  * The main class for the MancalaTest Game.
  *
  * @author #ODOT
@@ -9,7 +14,7 @@
 public class MancalaTest
 {
     /**
-     * One method to rule them all..
+     * Opens and runs the game starting from the homeframe (initial screen)
      * @param args Command Line arguments.
      */
     public static void main(String args[])

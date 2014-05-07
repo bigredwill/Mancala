@@ -18,7 +18,6 @@ import javax.swing.ImageIcon;
  */
 public class PitIcon extends ImageIcon
 {
-
     ArrayList<Point> points;
     int width;
     int height;
@@ -29,16 +28,14 @@ public class PitIcon extends ImageIcon
     boolean firstPaint;
     BufferedImage marbImg;
     BufferedImage pitImg;
-//    String mb = "/Images/marble.png";
     BoardTheme theme = null;
-    //String mb = "/Images/greenMarb.png";
 
     /**
-     * Constructs a pit with a num of marbles.
+     * Constructs a pit with a number of marbles.
      *
-     * @param numMarbs
-     * @param bg
-     * @param isEnd
+     * @param numMarbs the number of marbles
+     * @param theme the theme that this pit is using
+     * @param isEnd true if it is a mancala, else false
      */
     public PitIcon(int numMarbs, boolean isEnd, BoardTheme theme)
     {
@@ -78,6 +75,13 @@ public class PitIcon extends ImageIcon
 
     }
 
+    /**
+     * paints an icon
+     * @param c the component 
+     * @param g the graphics parameter
+     * @param x the x coordinate
+     * @param y the y coordinate
+     */
     @Override
     public void paintIcon(Component c, Graphics g, int x, int y)
     {
@@ -90,9 +94,9 @@ public class PitIcon extends ImageIcon
     /**
      * Helper function for paintIcon draws marbles.
      *
-     * @param b
-     * @param c
-     * @param g
+     * @param b the image to be displayed
+     * @param c the component to be used
+     * @param g the graphics parameter
      */
     public void paintMarbles(BufferedImage b, Component c, Graphics g)
     {
@@ -131,12 +135,20 @@ public class PitIcon extends ImageIcon
         this.numMarbs = marbs;
     }
 
+    /**
+     * Gets the width of the icon
+     * @return the icon width
+     */
     @Override
     public int getIconWidth()
     {
         return width;
     }
 
+    /**
+     * Gets the height of the icon
+     * @return the icon height
+     */
     @Override
     public int getIconHeight()
     {
