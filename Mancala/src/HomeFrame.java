@@ -31,8 +31,8 @@ public class HomeFrame extends JFrame {
         }
         final JPanel mainFrame = imagePanel;
         
-        JButton whiteTheme = new JButton("White Theme");
-        JButton blackTheme = new JButton("Black Theme");
+        JButton whiteTheme = new JButton("Circle Theme");
+        JButton blackTheme = new JButton("Square Theme");
         JButton spongebobTheme = new JButton("Spongebob Theme");
         JButton groovyTheme = new JButton("Groovy Theme");
 
@@ -56,7 +56,7 @@ public class HomeFrame extends JFrame {
                     JOptionPane.showMessageDialog(mainFrame, "Enter a number between 1 and 4");
                 } else {
                     // GameFrame game = new GameFrame(new Model(marbles), Color.WHITE);
-                    model = new Model(marbles, Color.WHITE);
+                    model = new Model(marbles);
 
                     setVisible(false);
                     GameFrame gf = new GameFrame(model, new WhiteTheme());
@@ -72,7 +72,7 @@ public class HomeFrame extends JFrame {
                     JOptionPane.showMessageDialog(mainFrame, "Enter a number between 1 and 4");
                 } else {
                     ///GameFrame game = new GameFrame(new Model(marbles), Color.BLACK);
-                    model = new Model(marbles, Color.BLACK);
+                    model = new Model(marbles);
                     setVisible(false);
                     GameFrame gf = new GameFrame(model, new BlackTheme());
                     gf.setVisible(true);
@@ -88,7 +88,7 @@ public class HomeFrame extends JFrame {
                     JOptionPane.showMessageDialog(mainFrame, "Enter a number between 1 and 4");
                 } else {
                     ///GameFrame game = new GameFrame(new Model(marbles), Color.BLACK);
-                    model = new Model(marbles, Color.BLACK);
+                    model = new Model(marbles);
                     setVisible(false);
                     GameFrame gf = new GameFrame(model, new SpongeBobTheme());
                     gf.setVisible(true);
@@ -105,7 +105,7 @@ public class HomeFrame extends JFrame {
                     JOptionPane.showMessageDialog(mainFrame, "Enter a number between 1 and 4");
                 } else {
                     ///GameFrame game = new GameFrame(new Model(marbles), Color.BLACK);
-                    model = new Model(marbles, Color.BLACK);
+                    model = new Model(marbles);
                     setVisible(false);
                     GameFrame gf = new GameFrame(model, new GroovyTheme());
                     gf.setVisible(true);
